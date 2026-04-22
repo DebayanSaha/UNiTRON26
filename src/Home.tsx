@@ -34,19 +34,17 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#12002B] text-white min-h-screen overflow-x-hidden">
+    <div className="bg-[#03030a] text-white min-h-screen overflow-x-hidden">
       <Navbar />
       <main>
         <Hero />
         <Countdown />
-        <Events />
         <About />
+        <Events />
         <CoreTeam />
-        <GlimpsesOfPast />
         <Sponsors />
+        <GlimpsesOfPast />
       </main>
-      {/* Gradient bridge: blends Sponsors bottom into Footer top */}
-      <div style={{ height: '80px', background: 'linear-gradient(to bottom, #12002B, #050508)', marginTop: '-1px' }} />
       <Footer />
     </div>
   );

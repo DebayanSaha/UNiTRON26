@@ -1,14 +1,14 @@
 import React from 'react';
 
 export interface NFSTile {
-  id: string | number;
-  cols: string;
-  rows: string;
-  images: string[];
-  label: string;
-  icon?: React.ReactNode;
-  value: string;
-  unit?: string;
+    id: string | number;
+    cols: string;
+    rows: string;
+    images: string[];
+    label: string;
+    icon?: React.ReactNode;
+    value: string;
+    unit?: string;
 }
 
 export const gridTiles: NFSTile[] = [

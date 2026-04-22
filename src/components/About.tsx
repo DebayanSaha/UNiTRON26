@@ -1,193 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── static data ─────────────────────────────────────────── */
-
-const features = [
-  {
-    color: '#FF00A8',
-    bg: 'rgba(255,0,168,0.08)',
-    border: 'rgba(255,0,168,0.25)',
-    label: 'National Level Platform',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75" />
-      </svg>
-    ),
-  },
-  {
-    color: '#00F0FF',
-    bg: 'rgba(0,240,255,0.08)',
-    border: 'rgba(0,240,255,0.25)',
-    label: 'Exciting Events & Competitions',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-        <path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4v3H3V7z" />
-      </svg>
-    ),
-  },
-  {
-    color: '#FF00A8',
-    bg: 'rgba(255,0,168,0.08)',
-    border: 'rgba(255,0,168,0.25)',
-    label: 'Amazing Prizes & Recognition',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-      </svg>
-    ),
-  },
-];
-
-const clubStats = [
-  { value: '500+', label: 'Active Members' },
-  { value: '8+', label: 'Years of Legacy' },
-  { value: '30+', label: 'Annual Events' },
-  { value: '12+', label: 'Partner Colleges' },
-];
-
-/* ─── photo tile (shared style with video tile) ────────────── */
-
-function PhotoTile({ src, label, accent }: { src: string; label: string; accent: string }) {
-  return (
-    <>
-      <img
-        src={src}
-        alt={label}
-        className="absolute inset-0 w-full h-full object-cover"
-        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-      />
-      <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${accent}1a 0%, transparent 60%)` }} />
-      {/* placeholder icon shown when image is missing */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 pointer-events-none">
-        <svg className="w-5 h-5 opacity-15" fill="none" stroke={accent} strokeWidth={1.5} viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <path d="M21 15l-5-5L5 21" />
-        </svg>
-        <span className="font-rajdhani text-[7px] uppercase tracking-widest opacity-25" style={{ color: accent }}>
-          {label}
-        </span>
-      </div>
-    </>
-  );
-}
-
-/* ─── main component ───────────────────────────────────────── */
-
 export default function About() {
-  /* gsap refs */
   const sectionRef = useRef<HTMLElement>(null);
-  const colMidRef = useRef<HTMLDivElement>(null);
-  const colRightRef = useRef<HTMLDivElement>(null);
-  const mosaicRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
+  const row3Ref = useRef<HTMLDivElement>(null);
 
-  /* video state */
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const progressRef = useRef<HTMLInputElement>(null);
-  const controlsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
-  const [isMuted, setIsMuted] = useState(false);
-  const [showControls, setShowControls] = useState(true);
-
-  const fmt = (s: number) =>
-    `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
-
-  const togglePlay = () => {
-    const v = videoRef.current; if (!v) return;
-    if (v.paused) { v.play(); setIsPlaying(true); }
-    else { v.pause(); setIsPlaying(false); }
-  };
-
-  const handleTimeUpdate = () => {
-    const v = videoRef.current; if (!v) return;
-    setCurrentTime(v.currentTime);
-    setProgress(v.duration ? (v.currentTime / v.duration) * 100 : 0);
-  };
-
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = videoRef.current; if (!v) return;
-    const val = Number(e.target.value);
-    v.currentTime = (val / 100) * v.duration;
-    setProgress(val);
-  };
-
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = videoRef.current; if (!v) return;
-    const val = Number(e.target.value);
-    v.volume = val; v.muted = val === 0;
-    setVolume(val); setIsMuted(val === 0);
-  };
-
-  const toggleMute = () => {
-    const v = videoRef.current; if (!v) return;
-    if (isMuted) { v.muted = false; v.volume = volume || 0.5; setIsMuted(false); setVolume(v.volume); }
-    else { v.muted = true; setIsMuted(true); }
-  };
-
-  const toggleFullscreen = () => {
-    if (document.fullscreenElement) document.exitFullscreen();
-    else videoRef.current?.requestFullscreen();
-  };
-
-  const handleMouseMove = () => {
-    setShowControls(true);
-    if (controlsTimerRef.current) clearTimeout(controlsTimerRef.current);
-    if (isPlaying) controlsTimerRef.current = setTimeout(() => setShowControls(false), 2500);
-  };
-
-  /* GSAP */
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(colMidRef.current, { y: 40, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: colMidRef.current, start: 'top 80%' },
+      gsap.fromTo(row1Ref.current, { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: row1Ref.current, start: 'top 85%' },
       });
-      gsap.fromTo(colRightRef.current, { y: 40, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', delay: 0.1,
-        scrollTrigger: { trigger: colRightRef.current, start: 'top 80%' },
+      gsap.fromTo(row2Ref.current, { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: row2Ref.current, start: 'top 85%' },
       });
-      gsap.fromTo(mosaicRef.current, { x: 60, opacity: 0 }, {
-        x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: mosaicRef.current, start: 'top 80%' },
-      });
-
-      const pills = colMidRef.current?.querySelectorAll('.feature-pill') ?? [];
-      gsap.fromTo(pills, { y: 20, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.5, stagger: 0.12, ease: 'power2.out',
-        scrollTrigger: { trigger: colMidRef.current, start: 'top 75%' },
-      });
-
-      const statItems = statsRef.current?.querySelectorAll('.stat-item') ?? [];
-      gsap.fromTo(statItems, { scale: 0.85, opacity: 0 }, {
-        scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
-        scrollTrigger: { trigger: statsRef.current, start: 'top 85%' },
+      gsap.fromTo(row3Ref.current, { y: 50, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: row3Ref.current, start: 'top 85%' },
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  /* shared tile style — every cell in the mosaic uses this */
-  const tileBase: React.CSSProperties = {
-    position: 'relative',
-    overflow: 'hidden',
-    borderRadius: '10px',
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.07)',
-  };
-
-  /* ── JSX ──────────────────────────────────────────────────── */
   return (
     <>
       <style>{`
@@ -196,372 +37,125 @@ export default function About() {
         .font-orbitron  { font-family: 'Orbitron', sans-serif; }
         .font-exo2      { font-family: 'Exo 2', sans-serif; }
         .font-rajdhani  { font-family: 'Rajdhani', sans-serif; }
-
-        /* gradient-border card */
-        .club-card-glow { position: relative; }
-        .club-card-glow::before {
-          content: '';
-          position: absolute; inset: 0;
-          border-radius: 14px; padding: 1px;
-          background: linear-gradient(135deg, #FF00A8, #00F0FF, #FF00A8);
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-
-        .stat-value-glow { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
-
-        /*
-          Mosaic grid — 2 columns, 4 rows:
-
-            [ video  ] [ photo-a ]   row 1  \
-            [ video  ] [ photo-b ]   row 2   > video spans rows 1-3
-            [ video  ] [ photo-c ]   row 3  /
-            [ photo-d (wide)     ]   row 4
-
-          All row heights are fluid via clamp so the mosaic
-          scales naturally from mobile → desktop.
-        */
-        .mosaic-grid {
-          display: grid;
-          grid-template-columns: 2fr 1fr;
-          grid-template-rows:
-            clamp(72px, 9vw, 130px)
-            clamp(60px, 7.5vw, 108px)
-            clamp(60px, 7.5vw, 108px)
-            clamp(68px, 8.5vw, 120px);
-          gap: 5px;
-        }
-        /* video spans rows 1–3, column 1 */
-        .mosaic-video {
-          grid-column: 1;
-          grid-row: 1 / 4;
-        }
-        /* wide photo spans both columns on row 4 */
-        .mosaic-wide {
-          grid-column: 1 / -1;
-          grid-row: 4;
-        }
-
-        /* feature pill */
-        .feature-pill {
-          display: flex; align-items: center; gap: 10px;
-          padding: 10px 14px; border-radius: 8px;
-        }
-
-        /* video range inputs */
-        .vid-range {
-          -webkit-appearance: none; appearance: none;
-          height: 3px; border-radius: 2px;
-          background: rgba(255,255,255,0.2);
-          cursor: pointer; outline: none; width: 100%;
-        }
-        .vid-range::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          width: 10px; height: 10px; border-radius: 50%;
-          background: #FF00A8; box-shadow: 0 0 5px rgba(255,0,168,0.8);
-          cursor: pointer;
-        }
-        .vid-range::-moz-range-thumb {
-          width: 10px; height: 10px; border-radius: 50%;
-          background: #FF00A8; border: none; cursor: pointer;
-        }
-        .vol-range {
-          -webkit-appearance: none; appearance: none;
-          height: 2px; border-radius: 2px; width: 44px;
-          background: rgba(255,255,255,0.2);
-          cursor: pointer; outline: none;
-        }
-        .vol-range::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          width: 8px; height: 8px; border-radius: 50%;
-          background: #00F0FF; cursor: pointer;
-        }
-        .vol-range::-moz-range-thumb {
-          width: 8px; height: 8px; border-radius: 50%;
-          background: #00F0FF; border: none; cursor: pointer;
-        }
-
-        /* hover: video tile glows same as a photo tile */
-        .mosaic-video-tile:hover {
-          border-color: rgba(255,0,168,0.35) !important;
-        }
       `}</style>
+      
+      <section id="about" ref={sectionRef} className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 overflow-hidden bg-[#03030a] min-h-screen">
+        
+        {/* Background Ambience */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: `
+            radial-gradient(circle at 15% 30%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
+            radial-gradient(circle at 85% 70%, rgba(255, 0, 168, 0.04) 0%, transparent 50%)
+          `,
+        }} />
 
-      <section
-        id="about"
-        ref={sectionRef}
-        className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 overflow-hidden"
-      >
-        {/* bg grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(0,240,255,0.6) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,240,255,0.6) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-        {/* orbs */}
-        <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(255,0,168,0.1) 0%, transparent 70%)', filter: 'blur(50px)' }} />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(0,240,255,0.08) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+        {/* Grid Lines */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }} />
 
-        {/* ── Section Header ── */}
-        <div className="relative text-center mb-12 sm:mb-20 z-10">
-          <p className="font-rajdhani text-xs tracking-[0.35em] uppercase mb-3" style={{ color: '#00F0FF' }}>
-            — About —
-          </p>
-          <h2 className="font-nfs text-3xl sm:text-4xl lg:text-6xl font-black leading-tight">
-            WHO{' '}
-            <span className="relative inline-block" style={{ color: '#FF00A8' }}>
-              ARE WE
-              <span className="absolute -bottom-1 left-0 w-full h-[2px]"
-                style={{ background: 'linear-gradient(90deg, #FF00A8, #00F0FF)' }} />
-            </span>
+        {/* Row 1: About UNiTRON */}
+        <div ref={row1Ref} className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto mb-28 md:mb-36">
+          <h2 className="font-nfs text-5xl sm:text-6xl md:text-7xl uppercase tracking-widest text-white mb-4" style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}>
+            ABOUT UNi<span className="text-[#FF00A8] drop-shadow-[0_0_15px_rgba(255,0,168,0.8)]">T</span>RON
           </h2>
+          <p className="font-orbitron text-[#FF00A8] text-sm md:text-base tracking-[0.2em] uppercase mb-8 drop-shadow-[0_0_8px_rgba(255,0,168,0.6)]">
+            Event Dates: 24 - 25 AUG 2K26
+          </p>
+          <p className="font-rajdhani text-gray-300 text-lg sm:text-xl leading-relaxed">
+            Kolkata's most anticipated annual tech and gaming symposium, returning for its explosive <span className="text-[#FF00A8] font-bold">2nd edition</span>. Organized by <span className="text-white font-bold">Tic-Tech-Toe</span>, the official Science & Technology club of Future Institute of Technology (FIT), Kolkata.
+          </p>
         </div>
 
-        {/* ── Main 3-col grid ── */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
-
-          {/* ── COL 1: About UNiTRON ── */}
-          <div ref={colMidRef} className="flex flex-col">
-            <p className="font-rajdhani text-[10px] tracking-widest uppercase mb-4" style={{ color: '#00F0FF' }}>
-              ABOUT UNiTRON 2K26
-            </p>
-            <h3 className="font-orbitron text-xl sm:text-2xl lg:text-[1.55rem] font-black italic leading-tight mb-5">
-              UNITING INNOVATORS,
-              <br />
-              <span style={{ color: '#FF00A8' }}>IGNITING THE FUTURE.</span>
-            </h3>
-            <p className="font-rajdhani text-gray-400 text-sm sm:text-base lg:text-[0.95rem] leading-relaxed mb-4">
-              UNiTRON is the annual technical and gaming symposium hosted by Club Tic Tech Toe. It serves as a
-              high-octane convergence point for visionary developers, creative designers, hardware enthusiasts,
-              and elite esports athletes.
-            </p>
-            <p className="font-rajdhani text-gray-400 text-sm sm:text-base lg:text-[0.95rem] leading-relaxed mb-8">
-              Step into the arena where innovation meets intense competition. Through strategic coding battles,
-              robotics clashes, and adrenaline-pumping gaming tournaments, UNiTRON is the ultimate proving
-              ground for the next generation of tech leaders.
-            </p>
-
-            {/* Feature pills */}
-            <div className="flex flex-col gap-3">
-              {features.map((f) => (
-                <div key={f.label} className="feature-pill"
-                  style={{ background: f.bg, border: `1px solid ${f.border}`, color: f.color }}>
-                  <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
-                    style={{ background: f.bg, color: f.color }}>
-                    {f.icon}
-                  </div>
-                  <span className="font-rajdhani text-xs font-bold uppercase tracking-wider">{f.label}</span>
-                </div>
-              ))}
-            </div>
+        {/* Row 2: HOST */}
+        <div ref={row2Ref} className="relative z-10 mb-28 md:mb-36">
+          <div className="flex flex-col items-center mb-12">
+            <h2 className="font-nfs text-4xl sm:text-5xl uppercase tracking-widest text-gray-300">HOST</h2>
+            <div className="w-24 h-[3px] bg-gradient-to-r from-transparent via-[#FF00A8] to-transparent mt-4 shadow-[0_0_15px_#FF00A8]" />
           </div>
 
-          {/* ── COL 2: About the Club ── */}
-          <div ref={colRightRef} className="flex flex-col">
-            <p className="font-rajdhani text-[10px] tracking-widest uppercase mb-4 lg:text-right" style={{ color: '#00F0FF' }}>
-              About the Club
-            </p>
-            <h3 className="font-orbitron text-xl sm:text-2xl lg:text-[1.55rem] font-black italic leading-tight mb-5 lg:text-right">
-              TIC-TECH-TOE
-              <br />
-              <span style={{ color: '#00F0FF' }}>BUILD. HACK. INNOVATE.</span>
-            </h3>
-
-            {/* Club card */}
-            <div className="club-card-glow rounded-2xl p-5 sm:p-6 mb-5"
-              style={{ background: 'rgba(255,255,255,0.025)', backdropFilter: 'blur(12px)' }}>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-[3px] h-7 rounded-full flex-shrink-0"
-                  style={{ background: 'linear-gradient(180deg, #FF00A8, #00F0FF)' }} />
-                <h4 className="font-exo2 text-sm sm:text-base font-bold tracking-wide">The Technology Club</h4>
-              </div>
-              <p className="font-rajdhani text-gray-400 text-sm leading-relaxed mb-3">
-                Tic-Tech-Toe is the official technical club of Future Institute of Technology, driving innovation
-                through hands-on learning and competitive tech events. Focused on hackathons, coding challenges,
-                and robotics.
-              </p>
-              <p className="font-rajdhani text-gray-400 text-sm leading-relaxed mb-4">
-                Founded in 2018 with a simple mission: learn by building. Our flagship fest UNiTRON brings
-                developers, innovators, and creators together for intense tech battles and problem-solving
-                experiences.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Hackathons', 'Workshops', 'Robotics', 'AI/ML', 'Web Dev', 'IoT', 'Design'].map((tag) => (
-                  <span key={tag} className="font-rajdhani text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full"
-                    style={{ border: '1px solid rgba(0,240,255,0.3)', color: '#00F0FF', background: 'rgba(0,240,255,0.06)' }}>
-                    {tag}
-                  </span>
-                ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+            {/* Card 1: FIT */}
+            <div className="relative group bg-[#0a0a1a] rounded-2xl overflow-hidden border border-white/5 hover:border-[#00F0FF]/40 transition-all duration-500" style={{ boxShadow: '0 10px 30px -10px rgba(0,240,255,0.05)' }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#00F0FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="p-8 sm:p-10 h-full flex flex-col">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+                  <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center font-orbitron font-black text-[#00F0FF] text-2xl shrink-0 overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <img src="/fit-logo.png" alt="FIT Logo" className="w-full h-full object-contain p-2" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = 'FIT'; }} />
+                  </div>
+                  <h3 className="font-nfs text-2xl sm:text-3xl uppercase tracking-wider text-white">FUTURE INSTITUTE OF TECHNOLOGY</h3>
+                </div>
+                <p className="font-rajdhani text-gray-400 text-sm sm:text-base leading-relaxed uppercase tracking-wider flex-1 mb-8">
+                  Future Institute of Technology (FIT) is a private engineering college located in Garia, Kolkata, West Bengal, India. Established in 2014 and approved by AICTE and affiliated to Maulana Abul Kalam Azad University of Technology (MAKAUT). The institute fosters a strong academic foundation supported by experienced faculty, modern infrastructure, and industry-oriented learning.
+                </p>
+                <div className="flex gap-4">
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">in</a>
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">fb</a>
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Stats */}
-            <div ref={statsRef} className="grid grid-cols-2 gap-3 mb-4">
-              {clubStats.map((s, i) => (
-                <div key={s.label} className="stat-item text-center rounded-xl py-4 sm:py-5 px-2"
-                  style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid ${i % 2 === 0 ? 'rgba(255,0,168,0.2)' : 'rgba(0,240,255,0.2)'}` }}>
-                  <p className="font-orbitron text-xl sm:text-2xl font-black mb-1 stat-value-glow"
-                    style={{ color: i % 2 === 0 ? '#FF00A8' : '#00F0FF' }}>
-                    {s.value}
-                  </p>
-                  <p className="font-rajdhani text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-500">{s.label}</p>
+            {/* Card 2: Tic-Tech-Toe */}
+            <div className="relative group bg-[#0a0a1a] rounded-2xl overflow-hidden border border-white/5 hover:border-[#FF00A8]/40 transition-all duration-500" style={{ boxShadow: '0 10px 30px -10px rgba(255,0,168,0.05)' }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF00A8]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="p-8 sm:p-10 h-full flex flex-col">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+                  <div className="w-16 h-16 rounded-xl bg-[#0a0a1e] border border-[#FF00A8]/30 flex items-center justify-center shrink-0 overflow-hidden shadow-[0_0_15px_rgba(255,0,168,0.2)]">
+                    <img src="/tictechtoe-logo.png" alt="TicTechToe Logo" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = '<span class="font-orbitron text-[#FF00A8] text-xl font-black">TTT</span>'; }} />
+                  </div>
+                  <h3 className="font-nfs text-2xl sm:text-3xl uppercase tracking-wider text-white">TIC-TECH-TOE</h3>
                 </div>
-              ))}
-            </div>
-
-            {/* Accent words */}
-            <div className="grid grid-cols-3 gap-2">
-              {['INNOVATE', 'CREATE', 'COMPETE'].map((word, i) => (
-                <div key={word}
-                  className="font-orbitron text-[8px] sm:text-[9px] font-black tracking-[0.2em] text-center py-2.5 rounded-lg"
-                  style={{
-                    color: i % 2 === 0 ? '#FF00A8' : '#00F0FF',
-                    border: `1px solid ${i % 2 === 0 ? 'rgba(255,0,168,0.2)' : 'rgba(0,240,255,0.2)'}`,
-                    background: i % 2 === 0 ? 'rgba(255,0,168,0.05)' : 'rgba(0,240,255,0.05)',
-                  }}>
-                  {word}
+                <p className="font-rajdhani text-gray-400 text-sm sm:text-base leading-relaxed uppercase tracking-wider flex-1 mb-8">
+                  Tic-Tech-Toe is the official technical club of Future Institute of Technology, driving innovation through hands-on learning and competitive tech events. We focus on hackathons, coding challenges, and robotics competitions. Our flagship fest, UNiTRON, brings together developers, innovators, and creators for intense hackathons, tech battles, and problem-solving experiences.
+                </p>
+                <div className="flex gap-4">
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#FF00A8] hover:border-[#FF00A8] cursor-pointer transition-all">in</a>
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#FF00A8] hover:border-[#FF00A8] cursor-pointer transition-all">fb</a>
+                  <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#FF00A8] hover:border-[#FF00A8] cursor-pointer transition-all">ig</a>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* ── COL 3: Unified Mosaic (video + photos as one panel) ── */}
-          <div ref={mosaicRef} className="relative md:col-span-2 lg:col-span-1">
-
-            {/* UNiTRON badge — sits over the whole mosaic */}
-            <div className="absolute top-2 left-2 z-30 font-orbitron text-[8px] font-black tracking-[0.2em] uppercase px-2 py-[3px] rounded"
-              style={{ background: '#FF00A8', boxShadow: '0 0 10px rgba(255,0,168,0.7)', zIndex: 30 }}>
-              UNiTRON
+        {/* Row 3: Stats */}
+        <div ref={row3Ref} className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
+          {/* Stat 1 */}
+          <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
+            <div className="font-orbitron font-black text-4xl sm:text-5xl text-[#FF00A8] mb-3 group-hover:scale-110 transition-transform duration-300" style={{ textShadow: '0 0 20px rgba(255,0,168,0.6)' }}>
+              2nd
             </div>
+            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">EDITIONS</p>
+          </div>
+          {/* Stat 2 */}
+          <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
+            <div className="font-orbitron font-black text-4xl sm:text-5xl text-[#FF00A8] mb-3 group-hover:scale-110 transition-transform duration-300" style={{ textShadow: '0 0 20px rgba(255,0,168,0.6)' }}>
+              5,000+
+            </div>
+            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">ATTENDEES PER EDITION</p>
+          </div>
+          {/* Stat 3 */}
+          <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
+            <div className="font-orbitron font-black text-4xl sm:text-5xl text-[#FF00A8] mb-3 group-hover:scale-110 transition-transform duration-300" style={{ textShadow: '0 0 20px rgba(255,0,168,0.6)' }}>
+              140+
+            </div>
+            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">COLLEGES REPRESENTED</p>
+          </div>
+          {/* Stat 4 */}
+          <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
+            <div className="font-orbitron font-black text-4xl sm:text-5xl text-[#FF00A8] mb-3 group-hover:scale-110 transition-transform duration-300" style={{ textShadow: '0 0 20px rgba(255,0,168,0.6)' }}>
+              40+
+            </div>
+            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">EVENTS & COMPETITIONS</p>
+          </div>
+        </div>
 
-            <div className="mosaic-grid">
-
-              {/* ── VIDEO TILE (col 1, rows 1-3) ── */}
-              <div
-                className="mosaic-video mosaic-video-tile transition-colors duration-300"
-                style={{ ...tileBase, cursor: isPlaying && !showControls ? 'none' : 'default' }}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={() => { if (isPlaying) setShowControls(false); }}
-              >
-                {/* video element */}
-                <video
-                  ref={videoRef}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  src="/teaser.webm"
-                  loop playsInline
-                  onTimeUpdate={handleTimeUpdate}
-                  onLoadedMetadata={() => { if (videoRef.current) setDuration(videoRef.current.duration); }}
-                  onEnded={() => setIsPlaying(false)}
-                  onClick={togglePlay}
-                  style={{ opacity: isPlaying ? 1 : 0.55, transition: 'opacity 0.3s' }}
-                />
-
-                {/* subtle pink tint overlay matching photo tiles */}
-                <div className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'linear-gradient(135deg, rgba(255,0,168,0.12) 0%, transparent 55%)' }} />
-
-                {/* pre-play overlay */}
-                {!isPlaying && (
-                  <div
-                    className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-2"
-                    style={{ background: 'rgba(0,0,0,0.32)' }}
-                    onClick={togglePlay}
-                  >
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                      style={{ backgroundColor: '#FF00A8', boxShadow: '0 0 20px rgba(255,0,168,0.7)' }}
-                    >
-                      <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <p className="font-orbitron text-[9px] font-black tracking-[0.2em] text-white/80 uppercase">
-                      2026 Teaser
-                    </p>
-                  </div>
-                )}
-
-                {/* control bar — compact to fit the tile */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 z-20 px-2 pb-1.5 pt-5 transition-opacity duration-300"
-                  style={{
-                    opacity: showControls ? 1 : 0,
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)',
-                    pointerEvents: showControls ? 'auto' : 'none',
-                  }}
-                >
-                  {/* progress */}
-                  <input
-                    ref={progressRef}
-                    type="range" min={0} max={100} step={0.1} value={progress}
-                    onChange={handleSeek}
-                    className="vid-range mb-1.5 block"
-                    style={{ background: `linear-gradient(to right, #FF00A8 ${progress}%, rgba(255,255,255,0.18) ${progress}%)` }}
-                  />
-                  {/* controls row */}
-                  <div className="flex items-center gap-1.5">
-                    {/* play/pause */}
-                    <button onClick={togglePlay} className="text-white hover:text-pink-400 transition-colors flex-shrink-0">
-                      {isPlaying
-                        ? <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
-                        : <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>}
-                    </button>
-
-                    {/* mute */}
-                    <button onClick={toggleMute} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
-                      {isMuted || volume === 0
-                        ? <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" /></svg>
-                        : <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" /></svg>}
-                    </button>
-
-                    {/* volume */}
-                    <input type="range" min={0} max={1} step={0.02} value={isMuted ? 0 : volume}
-                      onChange={handleVolumeChange} className="vol-range"
-                      style={{ background: `linear-gradient(to right, #00F0FF ${(isMuted ? 0 : volume) * 100}%, rgba(255,255,255,0.18) ${(isMuted ? 0 : volume) * 100}%)` }} />
-
-                    {/* time */}
-                    <span className="font-rajdhani text-white/70 text-[8px] ml-auto flex-shrink-0">
-                      {fmt(currentTime)}/{fmt(duration)}
-                    </span>
-
-                    {/* fullscreen */}
-                    <button onClick={toggleFullscreen} className="text-white hover:text-cyan-400 transition-colors flex-shrink-0">
-                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* ── PHOTO TILES (col 2, rows 1–3) ── */}
-              <div style={tileBase}>
-                <PhotoTile src="/photos/event1.jpg" label="Highlights" accent="#00F0FF" />
-              </div>
-              <div style={tileBase}>
-                <PhotoTile src="/photos/event2.jpg" label="Hackathon" accent="#FF00A8" />
-              </div>
-              <div style={tileBase}>
-                <PhotoTile src="/photos/event3.jpg" label="Robotics" accent="#00F0FF" />
-              </div>
-
-              {/* ── WIDE PHOTO (row 4, both cols) ── */}
-              <div className="mosaic-wide" style={tileBase}>
-                <PhotoTile src="/photos/team.jpg" label="Team Photo" accent="#FF00A8" />
-              </div>
-
-            </div>{/* end mosaic-grid */}
-          </div>{/* end col 3 */}
-
-        </div>{/* end main grid */}
       </section>
     </>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
-const navLinks = ['HOME', 'EVENTS', 'ABOUT', 'GALLERY', 'SPONSORS', 'CONTACT'];
+const navLinks = ['HOME', 'ABOUT', 'EVENTS', 'THE TEAM', 'GALLERY', 'SPONSORS', 'CONTACT'];
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);

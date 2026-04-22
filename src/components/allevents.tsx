@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -24,98 +25,188 @@ interface EventData {
 
 const eventsData: EventData[] = [
   {
-    title: 'RACE',
-    tagline: 'Speed. Precision. Cross the finish line first!',
-    image: '/event-race.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'UNITRON ARENA',
-    team: '2 - 5 PLAYERS',
-    icon: '🏁',
-    featured: true,
-    domain: 'gaming',
-    description:
-      'Push your limits in the most adrenaline-fuelled racing challenge of UNITRON 2K26. Teams must complete obstacle-laden courses with speed and precision. Strategy, reflexes, and raw speed are all that stand between you and the podium. Multiple rounds, eliminations, and a heart-stopping final sprint.',
-    rulebook: '/rulebooks/race-rulebook.pdf',
-  },
-  {
-    title: 'HACKATHON',
-    tagline: 'Code. Build. Innovate under pressure!',
-    image: '/event-hackathon.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CYBER LAB',
-    team: '3 - 4 PLAYERS',
-    icon: '💻',
-    featured: true,
-    domain: 'coding',
-    description:
-      '24 hours. One problem. Infinite solutions. The UNITRON Hackathon challenges you to build a working product from scratch under time pressure. From ideation to deployment, teams will be judged on innovation, functionality, design, and pitch quality. The best ideas change the world — start here.',
-    rulebook: '/rulebooks/hackathon-rulebook.pdf',
-  },
-  {
-    title: 'GAMING',
-    tagline: 'Compete. Dominate. Claim your glory!',
+    title: 'FREE FIRE',
+    tagline: 'Battle Royale Survival',
     image: '/event-gaming.png',
     date: '24 - 25 AUG 2K26',
     venue: 'ESPORTS ZONE',
-    team: '1 - 2 PLAYERS',
+    team: '4 PLAYERS',
     icon: '🎮',
+    featured: true,
     domain: 'gaming',
-    description:
-      'The UNITRON Esports Zone brings together elite gamers for intense 1v1 and team battles across multiple titles. Prove your reflexes, strategy, and clutch factor in front of a live crowd. Bracket-style elimination with grand finals streamed live across all UNITRON platforms.',
-    rulebook: '/rulebooks/gaming-rulebook.pdf',
+    description: 'Drop into the battleground, loot up, and survive. Prove your squad\'s tactical superiority in high-stakes Free Fire matches.',
+    rulebook: '#',
   },
   {
-    title: 'ROBOWAR',
+    title: 'BGMI',
+    tagline: 'Chicken Dinner Awaits',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '4 PLAYERS',
+    icon: '🔫',
+    domain: 'gaming',
+    description: 'The ultimate battle royale experience. Coordinate with your squad, survive the zone, and secure the Winner Winner Chicken Dinner.',
+    rulebook: '#',
+  },
+  {
+    title: 'PES',
+    tagline: 'Virtual Pitch Glory',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '1 PLAYER',
+    icon: '⚽',
+    domain: 'gaming',
+    description: 'Take control of your favorite football clubs and outplay your opponents on the virtual pitch in intense PES matches.',
+    rulebook: '#',
+  },
+  {
+    title: 'FIFA',
+    tagline: 'Kickoff to Victory',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '1 PLAYER',
+    icon: '⚽',
+    domain: 'gaming',
+    description: 'Experience the thrill of competitive FIFA. Showcase your dribbling, passing, and shooting skills to become the champion.',
+    rulebook: '#',
+  },
+  {
+    title: 'VALORANT',
+    tagline: 'Tactical Hero Shooter',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '5 PLAYERS',
+    icon: '🎯',
+    featured: true,
+    domain: 'gaming',
+    description: '5v5 character-based tactical shooter. Combine precise gunplay with unique agent abilities to secure rounds and win the match.',
+    rulebook: '#',
+  },
+  {
+    title: 'CALL OF DUTY',
+    tagline: 'Modern Warfare Mobile',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '4 PLAYERS',
+    icon: '🪖',
+    domain: 'gaming',
+    description: 'Fast-paced multiplayer action. Dominate the maps in various game modes and lead your team to victory in Call of Duty Mobile.',
+    rulebook: '#',
+  },
+  {
+    title: 'MINI MILITIA',
+    tagline: '2D Multiplayer Combat',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '1 PLAYER',
+    icon: '🚁',
+    domain: 'gaming',
+    description: 'Intense 2D multiplayer combat. Grab your jetpack and weapons, and battle it out in chaotic free-for-all matches.',
+    rulebook: '#',
+  },
+  {
+    title: 'ASPHALT',
+    tagline: 'Arcade Racing Legends',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'ESPORTS ZONE',
+    team: '1 PLAYER',
+    icon: '🏎️',
+    domain: 'gaming',
+    description: 'High-speed arcade racing. Drift, boost, and perform stunts to cross the finish line first in Asphalt.',
+    rulebook: '#',
+  },
+  {
+    title: 'LUDO',
+    tagline: 'Classic Board Showdown',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CASUAL ZONE',
+    team: '1 PLAYER',
+    icon: '🎲',
+    domain: 'gaming',
+    description: 'A digital twist on the classic board game. Roll the dice, plan your moves, and race your tokens to the finish.',
+    rulebook: '#',
+  },
+  {
+    title: 'UNO',
+    tagline: 'Draw Four, Ruin Friendships',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CASUAL ZONE',
+    team: '1 PLAYER',
+    icon: '🃏',
+    domain: 'gaming',
+    description: 'The fast-paced card game of matching colors and numbers. Play your cards right and don\'t forget to yell UNO!',
+    rulebook: '#',
+  },
+  {
+    title: 'DEATH RACE',
+    tagline: 'Speed. Avoid. Survive the deadly track!',
+    image: '/event-race.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'UNITRON ARENA',
+    team: '2 - 4 PLAYERS',
+    icon: '💀',
+    featured: true,
+    domain: 'tech',
+    description: 'Build an RC car that can survive a brutal, trap-filled obstacle course. Speed is important, but durability and maneuvering are key to finishing the death race.',
+    rulebook: '#',
+  },
+  {
+    title: 'ROBO SOCCER',
+    tagline: 'Kick. Score. Dominate the pitch!',
+    image: '/event-robowar.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'UNITRON ARENA',
+    team: '2 - 4 PLAYERS',
+    icon: '⚽',
+    domain: 'tech',
+    description: 'Take the field with your custom-built remote-controlled robots. Pass, tackle, and score goals against the opposing team in an action-packed robotic soccer tournament.',
+    rulebook: '#',
+  },
+  {
+    title: 'WATER ROCKET',
+    tagline: 'Pressurize. Launch. Touch the sky!',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'MAIN GROUND',
+    team: '1 - 3 PLAYERS',
+    icon: '🚀',
+    domain: 'tech',
+    description: 'Design and build aerodynamic water rockets using plastic bottles. Competitors will be judged on maximum flight time, altitude, and creative parachute deployment mechanisms.',
+    rulebook: '#',
+  },
+  {
+    title: 'ROBO WAR',
     tagline: 'Design. Destroy. Let machines battle!',
     image: '/event-robowar.png',
     date: '24 - 25 AUG 2K26',
     venue: 'BATTLE DOME',
     team: '3 - 5 PLAYERS',
     icon: '🤖',
-    domain: 'tech',
-    description:
-      'Engineer a combat robot and throw it into the arena. ROBOWAR is the ultimate test of mechanical design, electronics, and battle strategy. Your machine must survive hits, deliver blows, and outlast every opponent in the dome. Strict weight and size regulations apply — build smart, fight hard.',
-    rulebook: '/rulebooks/robowar-rulebook.pdf',
-  },
-  {
-    title: 'AI CHALLENGE',
-    tagline: 'Train. Predict. Outsmart the machine!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'NEURAL HUB',
-    team: '2 - 3 PLAYERS',
-    icon: '🧠',
     featured: true,
-    domain: 'coding',
-    description:
-      'Tackle real-world datasets and build models that outperform the benchmark. The AI Challenge tests your knowledge of machine learning, data preprocessing, and model evaluation. Leaderboard-based scoring with live updates — climb the ranks in real time and claim the Neural Crown.',
-    rulebook: '/rulebooks/ai-rulebook.pdf',
+    domain: 'tech',
+    description: 'Engineer a combat robot and throw it into the arena. ROBO WAR is the ultimate test of mechanical design, electronics, and battle strategy. Your machine must survive hits and outlast every opponent.',
+    rulebook: '#',
   },
   {
-    title: 'CIRCUIT CLASH',
-    tagline: 'Wire. Spark. Build the impossible circuit!',
-    image: '/event-gaming.png',
+    title: 'ROBO RACE',
+    tagline: 'Double the speed, double the thrill!',
+    image: '/event-race.png',
     date: '24 - 25 AUG 2K26',
-    venue: 'VOLT ARENA',
+    venue: 'UNITRON ARENA',
     team: '2 - 4 PLAYERS',
-    icon: '⚡',
+    icon: '🏎️',
     domain: 'tech',
-    description:
-      'Given a problem statement and a bag of components, build a working circuit that solves it. Circuit Clash rewards deep hardware knowledge, fast hands, and creative thinking. Judges evaluate correctness, efficiency, and the elegance of your solution. No simulation — real boards, real stakes.',
-    rulebook: '/rulebooks/circuit-rulebook.pdf',
-  },
-  {
-    title: 'DRONE RACE',
-    tagline: 'Fly fast. Dodge hard. Win the sky!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'SKY DOME',
-    team: '1 - 2 PLAYERS',
-    icon: '🚁',
-    domain: 'tech',
-    description:
-      'Navigate your drone through a high-speed aerial obstacle course inside the Sky Dome. Fastest clean lap wins. Pilots must demonstrate precision control, spatial awareness, and split-second decision making. FPV goggles provided; bring your own controller or borrow one on-site.',
-    rulebook: '/rulebooks/drone-rulebook.pdf',
+    description: 'Bring your custom-built remote-controlled cars and navigate a high-speed racing track. Race against the clock and other competitors to claim the championship trophy.',
+    rulebook: '#',
   },
   {
     title: 'QUIZ MASTER',
@@ -144,32 +235,6 @@ const eventsData: EventData[] = [
     rulebook: '/rulebooks/paper-rulebook.pdf',
   },
   {
-    title: 'CYBER ESCAPE',
-    tagline: 'Decrypt. Solve. Break out before time runs out!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'MATRIX ROOM',
-    team: '3 - 5 PLAYERS',
-    icon: '🔐',
-    domain: 'coding',
-    description:
-      'A digital escape room where puzzles are coded riddles, cipher challenges, and logic traps. Teams race the clock to decrypt clues, navigate terminals, and break out before time runs out. Fastest escape wins — but every wrong move costs precious seconds.',
-    rulebook: '/rulebooks/escape-rulebook.pdf',
-  },
-  {
-    title: 'WEB SPRINT',
-    tagline: 'Design. Deploy. Deliver in 60 minutes!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'PIXEL LAB',
-    team: '1 - 2 PLAYERS',
-    icon: '🌐',
-    domain: 'coding',
-    description:
-      'Build a fully functional, visually polished website in 60 minutes flat. A prompt is revealed at the start — the rest is up to you. Judged on design quality, responsiveness, functionality, and creativity. Bring your stack, bring your speed.',
-    rulebook: '/rulebooks/web-rulebook.pdf',
-  },
-  {
     title: 'TECH DEBATE',
     tagline: 'Argue. Convince. Win the tech war of words!',
     image: '/event-gaming.png',
@@ -181,6 +246,138 @@ const eventsData: EventData[] = [
     description:
       'Two teams. One controversial tech topic. Fight it out with facts, wit, and rhetoric. Topics are drawn at random — teams get 10 minutes to prepare, then it\'s live on stage. Judged on argument strength, rebuttals, and audience impact. The best debater wins hearts and minds.',
     rulebook: '/rulebooks/debate-rulebook.pdf',
+  },
+  {
+    title: 'NITRO CIRCUITS',
+    tagline: 'Arduino Based Coding',
+    image: '/event-circuit.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'LAB 1',
+    team: '1 - 2 PLAYERS',
+    icon: '⚡',
+    domain: 'coding',
+    description: 'A challenge focusing on Arduino based coding and circuit logic. Combine hardware and software to solve complex real-world problems.',
+    rulebook: '#',
+  },
+  {
+    title: 'BUG BREAKDOWN',
+    tagline: 'Syntax Sabotage',
+    image: '/event-hackathon.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'LAB 2',
+    team: '1 PLAYER',
+    icon: '🐛',
+    domain: 'coding',
+    description: 'Find and fix the bugs in heavily sabotaged code. Test your debugging skills across various programming languages under a strict time limit.',
+    rulebook: '#',
+  },
+  {
+    title: 'FRONTEND FURY',
+    tagline: 'Css Battle',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'LAB 3',
+    team: '1 PLAYER',
+    icon: '🎨',
+    domain: 'coding',
+    description: 'Replicate complex UI designs using only HTML and CSS. No images, no SVGs, no JS. Just pure CSS styling skills and pixel-perfect precision.',
+    rulebook: '#',
+  },
+  {
+    title: 'BACKTRACK BURNOUT',
+    tagline: 'Reverse Coding',
+    image: '/event-ai.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'LAB 4',
+    team: '1 - 2 PLAYERS',
+    icon: '🔄',
+    domain: 'coding',
+    description: 'Given an executable or output pattern, write the code that generates it. Think backwards, analyze the behavior, and reconstruct the logic.',
+    rulebook: '#',
+  },
+  {
+    title: 'OUTRUN THE HEAT',
+    tagline: 'Hurdle Race',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: 'VARIES',
+    icon: '🏃',
+    domain: 'non-tech',
+    description: 'A thrilling hurdle race that will test your speed, agility, and endurance.',
+    rulebook: '#',
+  },
+  {
+    title: "THE OUTLAW'S CACHE",
+    tagline: 'Treasure Hunt',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: 'TEAM',
+    icon: '🗺️',
+    domain: 'non-tech',
+    description: 'Follow the clues, solve the riddles, and discover the hidden cache before time runs out.',
+    rulebook: '#',
+  },
+  {
+    title: 'THE MOTION GALLERY',
+    tagline: 'Photography',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: '1 PLAYER',
+    icon: '📸',
+    domain: 'non-tech',
+    description: 'Capture the essence of motion and emotion. Show us your best photographic skills.',
+    rulebook: '#',
+  },
+  {
+    title: 'UNDERGROUND UTOPIA',
+    tagline: 'Carnival',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: 'ALL',
+    icon: '🎪',
+    domain: 'non-tech',
+    description: 'Experience the ultimate carnival vibe with games, music, and an unforgettable utopian atmosphere.',
+    rulebook: '#',
+  },
+  {
+    title: 'VISUAL REPUTATION',
+    tagline: 'Drawing',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: '1 PLAYER',
+    icon: '🖌️',
+    domain: 'non-tech',
+    description: 'Express your artistic vision. Bring your imagination to life on the canvas.',
+    rulebook: '#',
+  },
+  {
+    title: 'AIRBORNE CONNECTION',
+    tagline: 'Span The Gap',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: 'TEAM',
+    icon: '🌉',
+    domain: 'non-tech',
+    description: 'Design and build a bridge structure that can span the gap and hold maximum weight.',
+    rulebook: '#',
+  },
+  {
+    title: 'RAPID RESPONSE',
+    tagline: 'Tech Quiz',
+    image: '/event-gaming.png',
+    date: '24 - 25 AUG 2K26',
+    venue: 'CAMPUS',
+    team: 'TEAM',
+    icon: '💡',
+    domain: 'non-tech',
+    description: 'Test your knowledge on the latest tech trends, trivia, and innovations in this fast-paced quiz.',
+    rulebook: '#',
   },
 ];
 
@@ -382,9 +579,6 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
                 FEATURED
               </div>
             )}
-            <div className="absolute bottom-3 left-3 flex items-center gap-3">
-              <HexIcon>{event.icon}</HexIcon>
-            </div>
           </div>
 
           {/* RIGHT (desktop) / BOTTOM (mobile) — details */}
@@ -404,7 +598,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
             <div>
               <p className="text-[9px] sm:text-[10px] font-heading tracking-[0.3em] uppercase mb-1" style={{ color: '#00F0FF' }}>EVENT DETAILS</p>
               <h2
-                className="font-nfs text-2xl sm:text-3xl tracking-wider uppercase"
+                className="font-nfs text-2xl sm:text-3xl tracking-wider uppercase pr-2"
                 style={{ background: 'linear-gradient(90deg,#fff,#aaa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
               >
                 {event.title}
@@ -491,7 +685,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
       Both divs share the SAME clipPath so nothing bleeds outside the shape.
     */
     <div
-      className="group"
+      className="group flex flex-col h-full"
       style={{
         clipPath: CLIP,
         background: 'linear-gradient(135deg, #FF00A8 0%, #00F0FF 50%, #FF00A8 100%)',
@@ -499,7 +693,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
       }}
     >
       <div
-        className="flex flex-col"
+        className="flex flex-col flex-1"
         style={{
           margin: '1.5px',
           clipPath: INNER_CLIP,
@@ -534,19 +728,14 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
             </div>
           )}
 
-          <div className="absolute top-3 right-3"><TrophyHex /></div>
-
-          {/* Title — right-16 clears the trophy */}
-          <div className="absolute bottom-4 left-4 right-16 flex items-center gap-2 min-w-0">
-            <HexIcon>{event.icon}</HexIcon>
+          {/* Title */}
+          <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2">
             <h3
-              className="font-nfs text-xl tracking-wider uppercase truncate"
+              className="font-nfs text-xl tracking-wider uppercase leading-tight drop-shadow-md pr-2"
               style={{
                 background: 'linear-gradient(90deg, #ffffff 60%, #cccccc)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                minWidth: 0,
-                flexShrink: 1,
               }}
             >
               {event.title}
@@ -555,7 +744,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
         </div>
 
         {/* INFO */}
-        <div className="flex flex-col px-4 pt-4 pb-5 gap-3">
+        <div className="flex flex-col px-4 pt-4 pb-5 gap-3 flex-1">
 
           <p className="text-xs text-gray-400 font-sans italic leading-snug line-clamp-2">{event.tagline}</p>
 
@@ -587,7 +776,9 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
             </div>
           </div>
 
-          <RegisterButton onClick={onOpen} />
+          <div className="mt-auto">
+            <RegisterButton onClick={onOpen} />
+          </div>
         </div>
       </div>
     </div>
@@ -622,14 +813,13 @@ function SearchInput({ value, onChange }: { value: string; onChange: (v: string)
 /* ─────────────────────────────────────────
    FILTER TABS — unchanged
 ───────────────────────────────────────── */
-type Domain = 'all' | 'tech' | 'gaming' | 'coding' | 'non-tech';
+type Domain = 'tech' | 'gaming' | 'coding' | 'non-tech';
 
 const TAB_LABELS: { key: Domain; label: string }[] = [
-  { key: 'all', label: 'ALL' },
-  { key: 'tech', label: 'TECH' },
+  { key: 'tech', label: 'ROBOTICS' },
   { key: 'gaming', label: 'GAMING' },
   { key: 'coding', label: 'CODING' },
-  { key: 'non-tech', label: 'NON-TECH' },
+  { key: 'non-tech', label: 'FUN' },
 ];
 
 function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain) => void }) {
@@ -665,7 +855,8 @@ function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain
    MAIN PAGE — unchanged except selectedEvent state + popup
 ───────────────────────────────────────── */
 export default function AllEvents() {
-  const [active, setActive] = useState<Domain>('all');
+  const location = useLocation();
+  const [active, setActive] = useState<Domain>(location.state?.filter || 'all');
   const [search, setSearch] = useState('');
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -684,14 +875,13 @@ export default function AllEvents() {
 
   const filtered = useMemo(() => {
     // First apply domain filter
-    const domainPool =
-      active === 'all' ? eventsData : eventsData.filter((e) => e.domain === active);
+    const domainPool = eventsData.filter((e) => e.domain === active);
 
     if (!search.trim()) return domainPool;
 
     // Run fuzzy search over the full dataset, then intersect with domain
     const fuseResults = fuse.search(search).map((r) => r.item);
-    return fuseResults.filter((e) => active === 'all' || e.domain === active);
+    return fuseResults.filter((e) => e.domain === active);
   }, [active, search, fuse]);
 
   useEffect(() => {
@@ -810,7 +1000,7 @@ export default function AllEvents() {
               <div className="flex flex-col items-center justify-center py-32 gap-4">
                 <div className="text-5xl">🔍</div>
                 <p className="font-heading tracking-widest text-gray-500 uppercase text-sm">No events found</p>
-                <button onClick={() => { setSearch(''); setActive('all'); }} className="text-xs font-heading tracking-widest uppercase text-cyan-400 underline mt-2">
+                <button onClick={() => { setSearch(''); }} className="text-xs font-heading tracking-widest uppercase text-cyan-400 underline mt-2">
                   CLEAR FILTERS
                 </button>
               </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { gridTiles } from '../data/nfsData';
@@ -61,97 +61,138 @@ function LaserReveal({ children, delay = 0 }: LaserRevealProps) {
   );
 }
 
-// ─── Single photo tile ────────────────────────────────────────────────────────
-// PERFORMANCE: Using React.memo to prevent unnecessary re-renders
-const NFSPhotoGridTile = React.memo(({ tile }: { tile: any }) => {
-  const [imgIndex, setImgIndex] = useState(0);
+export default function GlimpsesOfPast() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const masonryRef = useRef<HTMLDivElement>(null);
+
+  // Extract all unique images
+  const allImages = [
+    '/memories/Coding1.webp',
+    '/memories/Coding2.webp',
+    '/memories/Coding3.webp',
+    '/memories/Gaming1.webp',
+    '/memories/Gaming3.webp',
+    '/memories/NT1.webp',
+    '/memories/NT2.webp',
+    '/memories/NT3.webp',
+    '/memories/Team1.JPG',
+    '/memories/Team2.webp',
+    '/memories/Team3.webp',
+    '/memories/Team4.webp',
+    '/memories/Tech1.webp',
+    '/memories/Tech2.JPG',
+    '/memories/Tech3.JPG',
+    '/memories/Tech4.webp',
+    '/memories/Tech5.webp',
+    '/memories/WhatsApp Image 2026-04-23 at 12.47.58 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.47.58 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.47.59 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.01 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.02 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.27 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.29 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.35 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.36 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.39 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.40 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.41 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.41 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.42 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.43 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.44 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.44 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.48.45 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.23 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.23 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.24 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.24 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.25 AM.jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.26 AM (1).jpeg',
+    '/memories/WhatsApp Image 2026-04-23 at 12.50.26 AM.jpeg',
+    '/memories/m1.jpeg',
+    '/memories/m2.jpeg'
+  ];
 
   useEffect(() => {
-    if (!tile.images || tile.images.length <= 1) return;
+    const ctx = gsap.context(() => {
+      // Masonry items stagger animation
+      gsap.fromTo('.masonry-item',
+        { opacity: 0, scale: 0.95 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: masonryRef.current, start: 'top 80%' }
+        }
+      );
+    }, containerRef);
 
-    // PERFORMANCE: Use a longer base interval so it doesn't crossfade constantly and lag the GPU
-    const intervalTime = 4000 + Math.random() * 4000;
-    const timer = setInterval(() => {
-      setImgIndex(prev => (prev + 1) % tile.images.length);
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [tile.images]);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className={`relative overflow-hidden group border border-white/5 ${tile.cols} ${tile.rows} bg-[#050508] transition-all duration-500`}>
-      {/* Dynamic Image Mapping */}
-      {tile.images && tile.images.map((imgSrc: string, i: number) => {
-        const isActive = i === imgIndex;
-        const isPrev = i === (imgIndex - 1 + tile.images.length) % tile.images.length;
-
-        // PERFORMANCE: Only render active and previous images. This massively reduces DOM nodes and prevents GPU memory leaks.
-        if (!isActive && !isPrev && tile.images.length > 2) return null;
-
-        return (
-          <img
-            key={i}
-            src={imgSrc}
-            alt={`${tile.label} memory ${i + 1}`}
-            loading="lazy"
-            decoding="async"
-            // PERFORMANCE: added will-change for hardware acceleration during crossfade
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out mix-blend-luminosity will-change-[opacity,transform]
-                       ${isActive ? 'opacity-40 group-hover:opacity-20 scale-100 z-10' : 'opacity-0 scale-105 z-0'}
-                       group-hover:mix-blend-normal`}
-          />
-        );
-      })}
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50 pointer-events-none transition-opacity duration-300 group-hover:opacity-70" />
-
-      <div className="absolute inset-0 p-4 md:p-5 flex flex-col justify-between pointer-events-none z-20">
-        <div className="flex items-start justify-between w-full">
-          <span className="font-heading text-[9px] md:text-[10px] text-white/50 tracking-[0.2em] uppercase break-words w-2/3 drop-shadow-md">
-            {tile.label}
-          </span>
-          {tile.icon && (
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] scale-125 md:scale-150 origin-top-right grayscale">
-              {tile.icon}
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-baseline gap-1.5 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-          <span className="font-heading font-bold text-2xl md:text-5xl text-white tracking-widest">{tile.value}</span>
-          {tile.unit && <span className="font-heading text-[8px] md:text-[12px] text-white/40 tracking-widest">{tile.unit}</span>}
-        </div>
-      </div>
-
-      <div className="absolute inset-0 opacity-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none mix-blend-screen z-10"
-        style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 4px)' }} />
-    </div>
-  );
-});
-
-// ─── Main export ──────────────────────────────────────────────────────────────
-export default function GlimpsesOfPast() {
-  return (
-    <div id="gallery" className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-20 relative w-full">
+    <div id="gallery" ref={containerRef} className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-20 relative w-full bg-black text-white font-body">
       <div className="max-w-[1800px] w-full mx-auto mb-24">
+
+        {/* HEADER SECTION */}
         <LaserReveal>
-          <div className="mb-8 pl-2 lg:pl-0">
+          <div className="mb-8 pl-2 lg:pl-0 text-center md:text-left">
             <div className="mono text-xs text-white/40 tracking-[0.4em] mb-2 uppercase">My NFS System</div>
-            <h2 className="racing-title text-4xl md:text-5xl text-white">
-              Glimpses of<span className="neon-text-cyan"> Past</span>
+            <h2 className="racing-title text-4xl md:text-5xl lg:text-7xl text-white font-black uppercase tracking-tight leading-none mb-4">
+              Glimpses of <span className="neon-text-cyan">Past</span>
             </h2>
+            <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
+              <span className="text-gray-500 text-xs tracking-[0.35em] uppercase font-mono">
+                {allImages.length} captures
+              </span>
+              <div className="h-px w-[120px] bg-gradient-to-r from-[#FF00A8]/70 to-transparent"></div>
+            </div>
           </div>
         </LaserReveal>
 
+        {/* MASONRY GRID SECTION WITH NFS UI FRAME */}
         <LaserReveal delay={0.1}>
-          <div className="w-full mx-auto border-[2px] border-white/20 bg-black/60 backdrop-blur-xl p-[2px] relative shadow-[0_0_40px_rgba(0,0,0,0.6)]">
+          <div className="w-full mx-auto border-[2px] border-white/20 bg-black/60 backdrop-blur-xl p-[2px] md:p-3 relative shadow-[0_0_40px_rgba(0,0,0,0.6)]">
             <div className="absolute -inset-[1px] border border-cyan-400/30 pointer-events-none z-10" />
-            <div className="grid grid-cols-4 md:grid-cols-6 auto-rows-[150px] md:auto-rows-[180px] lg:auto-rows-[200px] xl:auto-rows-[220px] 2xl:auto-rows-[260px] gap-1 relative z-20">
-              {gridTiles.map(tile => <NFSPhotoGridTile key={tile.id} tile={tile} />)}
+
+            <div ref={masonryRef} className="columns-2 md:columns-3 lg:columns-4 gap-1 md:gap-2 relative z-20">
+              {allImages.map((img, idx) => (
+                <div key={`mas-${idx}`} className="masonry-item break-inside-avoid mb-1 md:mb-2 cursor-pointer group relative overflow-hidden bg-[#050508] border border-white/5 transition-all duration-500">
+                  <img
+                    src={img}
+                    alt={`Gallery capture ${idx + 1}`}
+                    loading="lazy"
+                    className="w-full h-auto block transition-transform duration-[1500ms] group-hover:scale-105 mix-blend-luminosity group-hover:mix-blend-normal opacity-80 group-hover:opacity-100"
+                  />
+
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50 pointer-events-none transition-opacity duration-300 opacity-60 group-hover:opacity-20" />
+
+                  {/* NFS scanlines overlay */}
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none mix-blend-screen z-10"
+                    style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 4px)' }} />
+
+                  {/* Corner accents */}
+                  <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-cyan-400/0 group-hover:border-cyan-400/50 transition-all duration-300 z-20" />
+                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-[#FF00A8]/0 group-hover:border-[#FF00A8]/50 transition-all duration-300 z-20" />
+                </div>
+              ))}
             </div>
           </div>
         </LaserReveal>
       </div>
+
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }
