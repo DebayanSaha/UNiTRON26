@@ -10,7 +10,6 @@ import GlimpsesOfPast from './components/GlimpsesOfPast';
 import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
 import CoreTeam from './components/CoreTeam';
-
 // Register GSAP plugins globally
 gsap.registerPlugin(ScrollTrigger);
 

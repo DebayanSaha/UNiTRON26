@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Fuse from 'fuse.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -670,14 +671,28 @@ export default function AllEvents() {
   const gridRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
+  // Fuse.js instance — rebuilt only when dataset changes
+  const fuse = useMemo(
+    () =>
+      new Fuse(eventsData, {
+        keys: ['title', 'tagline', 'venue', 'domain'],
+        threshold: 0.3,   // 0 = exact, 1 = match anything; 0.3 = typo-tolerant but precise
+        minMatchCharLength: 2,
+      }),
+    []
+  );
+
   const filtered = useMemo(() => {
-    const q = search.toLowerCase();
-    return eventsData.filter((e) => {
-      const matchesDomain = active === 'all' || e.domain === active;
-      const matchesSearch = !q || e.title.toLowerCase().includes(q) || e.tagline.toLowerCase().includes(q) || e.venue.toLowerCase().includes(q);
-      return matchesDomain && matchesSearch;
-    });
-  }, [active, search]);
+    // First apply domain filter
+    const domainPool =
+      active === 'all' ? eventsData : eventsData.filter((e) => e.domain === active);
+
+    if (!search.trim()) return domainPool;
+
+    // Run fuzzy search over the full dataset, then intersect with domain
+    const fuseResults = fuse.search(search).map((r) => r.item);
+    return fuseResults.filter((e) => active === 'all' || e.domain === active);
+  }, [active, search, fuse]);
 
   useEffect(() => {
     if (!gridRef.current) return;
@@ -760,11 +775,16 @@ export default function AllEvents() {
           </div>
         </div>
 
-        {/* ── CONTENT WRAPPER ── */}
-        <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col lg:flex-row gap-8 lg:gap-12 pb-24">
-          
-          {/* ── SIDEBAR (Mobile Controls + Desktop Sidebar) ── */}
-          <div className="flex flex-col gap-5 lg:w-72 flex-shrink-0">
+        {/* ── CONTENT WRAPPER — fills remaining viewport height; only right panel scrolls ── */}
+        <div
+          className="relative z-10 flex flex-col lg:flex-row"
+          style={{ height: 'calc(100vh - 73px)', overflow: 'hidden' }}
+        >
+          {/* ── SIDEBAR (left panel — fixed, no scroll) ── */}
+          <div
+            className="flex-shrink-0 lg:w-72 flex flex-col gap-5 px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
+            style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}
+          >
             {/* Search */}
             <div className="w-full">
               <SearchInput value={search} onChange={setSearch} />
@@ -781,8 +801,11 @@ export default function AllEvents() {
             <div className="w-full h-px lg:hidden" style={{ background: 'linear-gradient(90deg, transparent, rgba(0,240,255,0.3) 30%, rgba(255,0,168,0.3) 70%, transparent)' }} />
           </div>
 
-          {/* ── MAIN GRID ── */}
-          <div className="flex-1 w-full">
+          {/* ── MAIN GRID (right panel — scrollable) ── */}
+          <div
+            className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24"
+            style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,0,168,0.3) transparent' }}
+          >
             {filtered.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-32 gap-4">
                 <div className="text-5xl">🔍</div>
@@ -792,7 +815,11 @@ export default function AllEvents() {
                 </button>
               </div>
             ) : (
-              <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div
+                ref={gridRef}
+                className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8"
+                style={{ maxWidth: 1400 }}
+              >
                 {filtered.map((event) => (
                   <EventCard key={event.title} event={event} onOpen={() => setSelectedEvent(event)} />
                 ))}

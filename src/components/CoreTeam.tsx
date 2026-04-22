@@ -217,13 +217,13 @@ function AvatarPhoto({
 function MemberCard({ member, accent }: { member: Member; accent: string }) {
   return (
     <div className="relative group/card shrink-0 mx-auto w-32 sm:w-40 md:w-48 lg:w-56 cursor-pointer" style={{ aspectRatio: '3/4' }}>
-      
+
       {/* 3D Base/Shadow Layer */}
-      <div 
+      <div
         className="absolute inset-0 transition-transform duration-300 group-hover/card:translate-x-2 group-hover/card:translate-y-2 pointer-events-none"
         style={{ clipPath: OUTER_CLIP, background: accent, opacity: 0.4 }}
       />
-      
+
       {/* Front Layer */}
       <div
         className="absolute inset-0 flex flex-col transition-transform duration-300 group-hover/card:-translate-x-1 group-hover/card:-translate-y-1"
@@ -292,13 +292,13 @@ const FAC_INNER = 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 
 function FacultyCard({ member, accent }: { member: Member; accent: string }) {
   return (
     <div className="relative group/card shrink-0 mx-auto w-36 sm:w-48 md:w-56 lg:w-64 cursor-pointer" style={{ aspectRatio: '3/4' }}>
-      
+
       {/* 3D Base/Shadow Layer */}
-      <div 
+      <div
         className="absolute inset-0 transition-transform duration-300 group-hover/card:translate-x-2 group-hover/card:translate-y-2 pointer-events-none"
         style={{ clipPath: FAC_OUTER, background: accent, opacity: 0.4 }}
       />
-      
+
       {/* Front Layer */}
       <div
         className="absolute inset-0 flex flex-col transition-transform duration-300 group-hover/card:-translate-x-1 group-hover/card:-translate-y-1"
@@ -319,7 +319,7 @@ function FacultyCard({ member, accent }: { member: Member; accent: string }) {
 
           <div className="flex flex-col items-center justify-center flex-1 p-2 sm:p-4 text-center gap-1 sm:gap-2 lg:gap-3">
             {/* Crown SVG */}
-            
+
 
             <div style={{ width: '100%' }}>
               <p
