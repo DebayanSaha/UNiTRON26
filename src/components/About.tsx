@@ -38,9 +38,9 @@ export default function About() {
         .font-exo2      { font-family: 'Exo 2', sans-serif; }
         .font-rajdhani  { font-family: 'Rajdhani', sans-serif; }
       `}</style>
-      
+
       <section id="about" ref={sectionRef} className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32 overflow-hidden bg-[#03030a] min-h-screen">
-        
+
         {/* Background Ambience */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: `
@@ -84,7 +84,7 @@ export default function About() {
               <div className="p-8 sm:p-10 h-full flex flex-col">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
                   <div className="w-16 h-16 rounded-xl bg-white flex items-center justify-center font-orbitron font-black text-[#00F0FF] text-2xl shrink-0 overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                    <img src="/fit-logo.png" alt="FIT Logo" className="w-full h-full object-contain p-2" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = 'FIT'; }} />
+                    <img src="/FE.png" alt="FIT Logo" className="w-full h-full object-contain p-2" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = 'FIT'; }} />
                   </div>
                   <h3 className="font-nfs text-2xl sm:text-3xl uppercase tracking-wider text-white">FUTURE INSTITUTE OF TECHNOLOGY</h3>
                 </div>
@@ -95,7 +95,7 @@ export default function About() {
                   <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">in</a>
                   <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">fb</a>
                   <a href="#" className="w-10 h-10 rounded-md bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#00F0FF] hover:border-[#00F0FF] cursor-pointer transition-all">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
                   </a>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function About() {
               <div className="p-8 sm:p-10 h-full flex flex-col">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
                   <div className="w-16 h-16 rounded-xl bg-[#0a0a1e] border border-[#FF00A8]/30 flex items-center justify-center shrink-0 overflow-hidden shadow-[0_0_15px_rgba(255,0,168,0.2)]">
-                    <img src="/tictechtoe-logo.png" alt="TicTechToe Logo" className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = '<span class="font-orbitron text-[#FF00A8] text-xl font-black">TTT</span>'; }} />
+                    <img src="/TTT.png" alt="TicTechToe Logo" className="w-full h-full object-contain" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; e.currentTarget.parentElement!.innerHTML = '<span class="font-orbitron text-[#FF00A8] text-xl font-black">TTT</span>'; }} />
                   </div>
                   <h3 className="font-nfs text-2xl sm:text-3xl uppercase tracking-wider text-white">TIC-TECH-TOE</h3>
                 </div>

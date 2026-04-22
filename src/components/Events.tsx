@@ -10,9 +10,9 @@ const INNER_CLIP = 'polygon(0 0, calc(100% - 12.5px) 0, 100% 12.5px, 100% 100%, 
 
 const DOMAINS = [
   { id: 'tech', label: 'ROBOTICS', description: 'Robotics, hardware, and engineering battles', image: '/D1.jpeg', accent: '#00F0FF' },
-  { id: 'gaming', label: 'GAMING', description: 'Esports, casual, and competitive gaming', image: '/event-gaming.png', accent: '#7FFF00' },
-  { id: 'coding', label: 'CODING', description: 'Hackathons, algorithm design, and logic', image: '/event-coding.png', accent: '#00FF99' },
-  { id: 'non-tech', label: 'FUN', description: 'Debates, quizzes, and creative events', image: '/event-fun.png', accent: '#FF00A8' },
+  { id: 'gaming', label: 'GAMING', description: 'Esports, casual, and competitive gaming', image: '/D2.jpeg', accent: '#7FFF00' },
+  { id: 'coding', label: 'CODING', description: 'Hackathons, algorithm design, and logic', image: '/D3.jpeg', accent: '#00FF99' },
+  { id: 'non-tech', label: 'FUN', description: 'Debates, quizzes, and creative events', image: '/D4.jpeg', accent: '#FF00A8' },
 ];
 
 function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; index: number; onClick: () => void }) {
@@ -52,7 +52,7 @@ function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; ind
           <img
             src={domain.image}
             alt={domain.label}
-            className="w-full h-full object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover md:grayscale opacity-90 md:opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
             style={{ objectPosition: 'center top' }}
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
           />
@@ -66,7 +66,7 @@ function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; ind
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:from-black/80 transition-all duration-500" />
 
         {/* Text Details */}
-        <div className="relative z-10 p-6 md:p-8 flex flex-col justify-end items-start text-left h-full transform md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+        <div className="relative z-10 p-6 md:p-8 flex flex-col justify-end items-start text-left h-full transform md:translate-y-6 md:group-hover:translate-y-0 transition-transform duration-500">
 
           {/* Accent Line */}
           <div className="w-8 h-[2px] mb-3 transition-all duration-500 group-hover:w-16" style={{ backgroundColor: accent, boxShadow: `0 0 10px ${accent}` }} />
@@ -77,12 +77,12 @@ function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; ind
           </h4>
 
           {/* Description */}
-          <p className="font-rajdhani text-gray-400 text-xs sm:text-sm md:text-xs lg:text-sm font-semibold tracking-wider uppercase leading-snug group-hover:text-white transition-colors duration-300 line-clamp-3">
+          <p className="font-rajdhani text-gray-300 md:text-gray-400 text-xs sm:text-sm md:text-xs lg:text-sm font-semibold tracking-wider uppercase leading-snug group-hover:text-white transition-colors duration-300 line-clamp-3">
             {domain.description}
           </p>
 
           {/* Explore Link */}
-          <div className="mt-5 flex items-center gap-2 opacity-60 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 font-orbitron text-[10px] md:text-xs tracking-[0.15em] uppercase font-bold" style={{ color: accent }}>
+          <div className="mt-5 flex items-center gap-2 opacity-100 md:opacity-60 group-hover:opacity-100 transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300 font-orbitron text-[10px] md:text-xs tracking-[0.15em] uppercase font-bold" style={{ color: accent }}>
             <span>Explore Events</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
@@ -118,7 +118,8 @@ export default function Events() {
   }, []);
 
   const handleDomainClick = (domainId: string) => {
-    navigate('/all-events', { state: { filter: domainId } });
+    // navigate('/all-events', { state: { filter: domainId } });
+    navigate('/coming-soon');
     window.scrollTo(0, 0); // scroll to top when navigating
   };
 
@@ -133,7 +134,7 @@ export default function Events() {
       {/* Header */}
       <div className="flex flex-col items-center justify-center mb-16 relative z-10">
         <h2 ref={titleRef} className="font-nfs text-5xl sm:text-6xl uppercase tracking-widest text-center text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-          EVENTS & <span className="text-[#FF00A8] drop-shadow-[0_0_15px_rgba(255,0,168,0.8)]">DOMAINS</span>
+          EVENTS
         </h2>
         <div className="w-24 h-[3px] bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent mt-6 opacity-80 shadow-[0_0_15px_#00F0FF]" />
       </div>
