@@ -297,7 +297,7 @@ export default function CoreTeam() {
   }, []);
 
   return (
-    <section id="The Team" className="relative py-24 bg-[#03030a] overflow-hidden min-h-screen">
+    <section id="team" className="relative py-24 bg-[#03030a] overflow-hidden min-h-screen">
 
       {/* Ambient glowing background patterns */}
       <div
