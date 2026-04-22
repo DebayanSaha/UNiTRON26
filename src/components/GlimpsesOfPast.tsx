@@ -115,16 +115,15 @@ export default function GlimpsesOfPast() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Masonry items stagger animation
+      // Smooth fade in animation for masonry items
       gsap.fromTo('.masonry-item',
-        { opacity: 0, scale: 0.95 },
+        { opacity: 0 },
         {
           opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: masonryRef.current, start: 'top 80%' }
+          duration: 1.2,
+          stagger: 0.1,
+          ease: 'power2.inOut',
+          scrollTrigger: { trigger: masonryRef.current, start: 'top 85%' }
         }
       );
     }, containerRef);
@@ -137,51 +136,38 @@ export default function GlimpsesOfPast() {
       <div className="max-w-[1800px] w-full mx-auto mb-24">
 
         {/* HEADER SECTION */}
-        <LaserReveal>
-          <div className="mb-8 pl-2 lg:pl-0 text-center md:text-left">
-            <div className="mono text-xs text-white/40 tracking-[0.4em] mb-2 uppercase">My NFS System</div>
-            <h2 className="racing-title text-4xl md:text-5xl lg:text-7xl text-white font-black uppercase tracking-tight leading-none mb-4">
-              Glimpses of <span className="neon-text-cyan">Past</span>
-            </h2>
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
-              <span className="text-gray-500 text-xs tracking-[0.35em] uppercase font-mono">
-                {allImages.length} captures
-              </span>
-              <div className="h-px w-[120px] bg-gradient-to-r from-[#FF00A8]/70 to-transparent"></div>
-            </div>
+        <div className="mb-8 pl-2 lg:pl-0 text-center md:text-left">
+          <div className="mono text-xs text-white/40 tracking-[0.4em] mb-2 uppercase">My NFS System</div>
+          <h2 className="racing-title text-4xl md:text-5xl lg:text-7xl text-white font-black uppercase tracking-tight leading-none mb-4">
+            Glimpses of <span className="neon-text-cyan">Past</span>
+          </h2>
+          <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
+            <span className="text-gray-500 text-xs tracking-[0.35em] uppercase font-mono">
+              {allImages.length} captures
+            </span>
+            <div className="h-px w-[120px] bg-gradient-to-r from-[#FF00A8]/70 to-transparent"></div>
           </div>
-        </LaserReveal>
+        </div>
 
-        {/* MASONRY GRID SECTION WITH NFS UI FRAME */}
-        <LaserReveal delay={0.1}>
-          <div className="w-full mx-auto border-[2px] border-white/20 bg-black/60 backdrop-blur-xl p-[2px] md:p-3 relative shadow-[0_0_40px_rgba(0,0,0,0.6)]">
-            <div className="absolute -inset-[1px] border border-cyan-400/30 pointer-events-none z-10" />
+        {/* CLEAN MASONRY GRID SECTION */}
+        <div ref={masonryRef} className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 relative z-20 mt-12">
+          {allImages.map((img, idx) => (
+            <div
+              key={`mas-${idx}`}
+              className="masonry-item break-inside-avoid mb-4 md:mb-6 cursor-pointer group relative overflow-hidden rounded-xl md:rounded-2xl transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/20"
+            >
+              <img
+                src={img}
+                alt={`Gallery capture ${idx + 1}`}
+                loading="lazy"
+                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              />
 
-            <div ref={masonryRef} className="columns-2 md:columns-3 lg:columns-4 gap-1 md:gap-2 relative z-20">
-              {allImages.map((img, idx) => (
-                <div key={`mas-${idx}`} className="masonry-item break-inside-avoid mb-1 md:mb-2 cursor-pointer group relative overflow-hidden bg-[#050508] border border-white/5 transition-all duration-500">
-                  <img
-                    src={img}
-                    alt={`Gallery capture ${idx + 1}`}
-                    loading="lazy"
-                    className="w-full h-auto block transition-transform duration-[1500ms] group-hover:scale-105 mix-blend-luminosity group-hover:mix-blend-normal opacity-80 group-hover:opacity-100"
-                  />
-
-                  {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/50 pointer-events-none transition-opacity duration-300 opacity-60 group-hover:opacity-20" />
-
-                  {/* NFS scanlines overlay */}
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none mix-blend-screen z-10"
-                    style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, #fff 2px, #fff 4px)' }} />
-
-                  {/* Corner accents */}
-                  <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-cyan-400/0 group-hover:border-cyan-400/50 transition-all duration-300 z-20" />
-                  <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-[#FF00A8]/0 group-hover:border-[#FF00A8]/50 transition-all duration-300 z-20" />
-                </div>
-              ))}
+              {/* Subtle dark gradient overlay for depth, just on hover or always subtle */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 pointer-events-none" />
             </div>
-          </div>
-        </LaserReveal>
+          ))}
+        </div>
       </div>
 
       <style>{`

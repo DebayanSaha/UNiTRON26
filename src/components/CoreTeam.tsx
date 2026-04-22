@@ -43,7 +43,7 @@ const TEAM: RoleGroup[] = [
       { name: 'Sayan Maity', designation: 'Mentor', image: '/TEAM/Sayan.jpg' },
       { name: 'Sudipta Sanyal', designation: 'Mentor', image: '/TEAM/Sudipta.jpg' },
       { name: 'Snehasish Das', designation: 'Mentor', image: '/TEAM/Snehasish.jpg' },
-      { name: 'Diganta Debsharma', designation: 'Mentor', image: '/TEAM/Debu.jpg' },
+      { name: 'Diganta Debsharma', designation: 'Mentor', image: '/TEAM/Diganta.jpeg' },
     ],
   },
   {
@@ -164,10 +164,11 @@ function SlantedCard({ member, accent }: { member: Member; accent: string }) {
   // Use a slight skew for the premium magazine look
   return (
     <div
-      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-full sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:w-[320px] lg:hover:w-[340px] xl:hover:w-[380px] md:hover:z-20 cursor-pointer"
+      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-[calc(50%-6px)] sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[260px] sm:h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:w-[320px] lg:hover:w-[340px] xl:hover:w-[380px] md:hover:z-20 cursor-pointer"
       style={{
         backgroundColor: '#05050f',
         boxShadow: `0 10px 30px -10px ${accent}30`,
+        clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)',
       }}
     >
       {/* Container with counter-skew for desktop */}
@@ -179,32 +180,32 @@ function SlantedCard({ member, accent }: { member: Member; accent: string }) {
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+              className="w-full h-full object-cover md:grayscale opacity-90 md:opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
               style={{ objectPosition: 'center top' }}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700">
-              <PlaceholderSVG accent={accent} size={140} />
+              <PlaceholderSVG accent={accent} size={80} />
             </div>
           )}
         </div>
 
         {/* Diagonal Light Sweep effect */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none"
+        <div className="absolute inset-0 opacity-10 md:opacity-0 group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none"
           style={{ background: `linear-gradient(105deg, transparent 20%, ${accent} 40%, transparent 60%)`, backgroundSize: '200% 100%', backgroundPosition: '100% 0' }} />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:from-black/80 transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent md:group-hover:from-black/80 transition-all duration-500" />
 
         {/* Text Details */}
-        <div className="relative z-10 p-6 md:p-8 flex flex-col justify-end h-full transform md:translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="w-8 h-[2px] mb-4 transition-all duration-500 group-hover:w-16" style={{ backgroundColor: accent, boxShadow: `0 0 15px ${accent}` }} />
-          <h4 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider text-white leading-[1.1] font-nfs drop-shadow-lg uppercase" style={{ textShadow: `0 0 20px ${accent}60` }}>
+        <div className="relative z-10 p-3 sm:p-6 md:p-8 flex flex-col justify-end h-full md:transform md:translate-y-6 md:group-hover:translate-y-0 transition-transform duration-500">
+          <div className="w-5 h-[2px] mb-2 sm:w-8 sm:mb-4 transition-all duration-500 group-hover:w-16" style={{ backgroundColor: accent, boxShadow: `0 0 15px ${accent}` }} />
+          <h4 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider text-white leading-[1.1] font-nfs drop-shadow-lg uppercase" style={{ textShadow: `0 0 15px ${accent}60` }}>
             {member.name.split(' ').map((part, i) => (
               <span key={i} className="block">{part}</span>
             ))}
           </h4>
-          <p className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-[0.3em] mt-4 uppercase text-gray-400 group-hover:text-white transition-colors duration-300">
+          <p className="text-[8px] sm:text-[10px] md:text-xs lg:text-sm font-semibold tracking-[0.2em] md:tracking-[0.3em] mt-1 sm:mt-4 uppercase text-gray-300 md:text-gray-400 group-hover:text-white transition-colors duration-300">
             {member.designation}
           </p>
         </div>
@@ -266,9 +267,9 @@ function RoleSection({ group }: { group: RoleGroup }) {
       </div>
 
       {/* Cards Container */}
-      <div className="flex flex-col gap-y-6 md:gap-y-12 px-4 max-w-[1600px] mx-auto">
+      <div className="flex flex-col gap-y-6 md:gap-y-12 px-2 sm:px-4 max-w-[1600px] mx-auto">
         {memberChunks.map((chunk, idx) => (
-          <div key={idx} className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-y-6 md:gap-x-4 lg:gap-x-6">
+          <div key={idx} className="flex flex-row flex-wrap justify-center items-center gap-3 sm:gap-6 md:gap-x-4 lg:gap-x-6">
             {chunk.map((member) => (
               <SlantedCard key={member.name} member={member} accent={group.accent} />
             ))}
