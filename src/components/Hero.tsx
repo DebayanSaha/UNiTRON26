@@ -173,7 +173,7 @@ export default function Hero() {
             className="text-gray-100 font-medium leading-relaxed mb-8 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] relative z-10 mx-auto sm:mx-0"
             style={{ fontSize: 'clamp(0.8rem, 1.8vw, 1rem)', maxWidth: 480 }}
           >
-            A NATIONAL LEVEL TECHNICAL SYMPOSIUM
+            THE GRAND TECHNICAL SYMPOSIUM
             <br />
             WHERE INNOVATION MEETS PASSION.
           </p>
@@ -184,11 +184,11 @@ export default function Hero() {
             className="flex flex-wrap gap-4 md:gap-6 relative z-10 justify-center sm:justify-start w-full"
           >
             <button className="btn-neon-pink bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
-              <span>REGISTER NOW</span>
+              <span>REGISTRATION WILL OPEN SOON</span>
             </button>
-            <button className="btn-neon-blue bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
+            {/*<button className="btn-neon-blue bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
               <span>EXPLORE EVENTS</span>
-            </button>
+            </button>*/}
           </div>
         </div>
       </div>

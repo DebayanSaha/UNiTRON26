@@ -17,24 +17,30 @@ export default function ComingSoonEvents() {
           EVENTS
         </h2>
 
-        {/* Futuristic Spinner */}
-        <div className="relative w-24 h-24 mb-10">
-          <div className="absolute inset-0 border-[3px] border-t-[#00F0FF] border-r-transparent border-b-[#FF00A8] border-l-transparent rounded-full animate-spin duration-1000"></div>
-          <div className="absolute inset-2 border-[3px] border-t-transparent border-r-[#FF00A8] border-b-transparent border-l-[#00F0FF] rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-3 h-3 bg-white rounded-full animate-pulse shadow-[0_0_15px_white]"></div>
+        {/* Professional Circular Loader */}
+        <div className="relative w-48 h-48 flex items-center justify-center mb-16">
+          {/* Subtle background ring */}
+          <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
+          
+          {/* Spinning sleek single-color ring */}
+          <div 
+            className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#00F0FF] border-l-[#00F0FF] animate-spin shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+            style={{ animationDuration: '1.5s' }}
+          ></div>
+
+          {/* Inner pulsating glow */}
+          <div className="absolute inset-4 rounded-full bg-[#00F0FF]/5 animate-pulse"></div>
+          
+          {/* Text inside the circle */}
+          <div className="flex flex-col items-center justify-center text-center z-10">
+            <span className="font-nfs text-sm md:text-base text-white/80 tracking-widest uppercase animate-pulse leading-tight">
+              Coming
+            </span>
+            <span className="font-nfs text-sm md:text-base text-[#00F0FF] tracking-widest uppercase animate-pulse leading-tight">
+              Soon
+            </span>
           </div>
         </div>
-
-        {/* Loading Bar */}
-        <div className="w-72 md:w-96 h-[2px] bg-white/10 overflow-hidden mb-8 relative">
-          <div className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-[#00F0FF] to-[#FF00A8] animate-[loading-bar_2s_ease-in-out_infinite]" />
-        </div>
-
-        {/* Status Text */}
-        <p className="text-white/80 tracking-[0.4em] font-mono text-lg md:text-2xl uppercase animate-pulse mb-16">
-          Coming Soon...
-        </p>
 
         {/* Back Button */}
         <button

@@ -10,9 +10,9 @@ const INNER_CLIP = 'polygon(0 0, calc(100% - 12.5px) 0, 100% 12.5px, 100% 100%, 
 
 const DOMAINS = [
   { id: 'tech', label: 'ROBOTICS', description: 'Robotics, hardware, and engineering battles', image: '/D1.jpeg', accent: '#00F0FF' },
-  { id: 'gaming', label: 'GAMING', description: 'Esports, casual, and competitive gaming', image: '/D2.jpeg', accent: '#7FFF00' },
-  { id: 'coding', label: 'CODING', description: 'Hackathons, algorithm design, and logic', image: '/D3.jpeg', accent: '#00FF99' },
-  { id: 'non-tech', label: 'FUN', description: 'Debates, quizzes, and creative events', image: '/D4.jpeg', accent: '#FF00A8' },
+  { id: 'gaming', label: 'GAMING', description: 'Esports, casual, and competitive gaming', image: '/D4.jpeg', accent: '#7FFF00' },
+  { id: 'coding', label: 'CODING', description: 'Hackathons, algorithm design, and logic', image: '/D2.jpeg', accent: '#00FF99' },
+  { id: 'non-tech', label: 'FUN', description: 'Debates, quizzes, and creative events', image: '/D3.jpeg', accent: '#FF00A8' },
 ];
 
 function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; index: number; onClick: () => void }) {
@@ -37,7 +37,7 @@ function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; ind
   return (
     <div
       ref={cardRef}
-      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-full sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:flex-[1.25] lg:hover:flex-[1.25] md:hover:z-20 cursor-pointer flex-1"
+      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-full sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:z-20 cursor-pointer md:flex-1"
       style={{
         backgroundColor: '#05050f',
         boxShadow: `0 10px 30px -10px ${accent}30`,

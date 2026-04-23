@@ -43,34 +43,34 @@ export default function Sponsors() {
       </div>
 
       {/* --- COMING SOON LOADER --- */}
-      <div className="sponsors-loader flex flex-col items-center">
+      <div className="sponsors-loader flex flex-col items-center justify-center mt-8">
+        
+        {/* Professional Circular Loader */}
+        <div className="relative w-40 h-40 flex items-center justify-center">
+          {/* Subtle background ring */}
+          <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
+          
+          {/* Spinning sleek single-color ring */}
+          <div 
+            className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#00F0FF] border-l-[#00F0FF] animate-spin shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+            style={{ animationDuration: '1.5s' }}
+          ></div>
 
-        {/* Futuristic Spinner */}
-        <div className="relative w-20 h-20 mb-8">
-          <div className="absolute inset-0 border-[3px] border-t-[#00F0FF] border-r-transparent border-b-[#FF00A8] border-l-transparent rounded-full animate-spin duration-1000"></div>
-          <div className="absolute inset-2 border-[3px] border-t-transparent border-r-[#FF00A8] border-b-transparent border-l-[#00F0FF] rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_10px_white]"></div>
+          {/* Inner pulsating glow */}
+          <div className="absolute inset-4 rounded-full bg-[#00F0FF]/5 animate-pulse"></div>
+          
+          {/* Text inside the circle */}
+          <div className="flex flex-col items-center justify-center text-center z-10">
+            <span className="font-nfs text-xs text-white/80 tracking-widest uppercase animate-pulse leading-tight">
+              Coming
+            </span>
+            <span className="font-nfs text-xs text-[#00F0FF] tracking-widest uppercase animate-pulse leading-tight">
+              Soon
+            </span>
           </div>
         </div>
 
-        {/* Loading Bar */}
-        <div className="w-64 md:w-80 h-[2px] bg-white/10 overflow-hidden mb-6 relative">
-          <div className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-[#00F0FF] to-[#FF00A8] animate-[loading-bar_2s_ease-in-out_infinite]" />
-        </div>
-
-        <p className="text-white/60 tracking-[0.4em] font-mono text-xs md:text-sm uppercase animate-pulse">
-          Coming Soon...
-        </p>
-
       </div>
-
-      <style>{`
-        @keyframes loading-bar {
-          0% { left: -33%; }
-          100% { left: 100%; }
-        }
-      `}</style>
 
     </section>
   );

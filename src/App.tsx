@@ -4,6 +4,7 @@ import Home from "./Home";
 import AllEvents from "./components/allevents";
 import Preloader from "./components/Preloader";
 import ComingSoonEvents from "./components/ComingSoonEvents";
+import AudioPlayer from "./components/AudioPlayer";
 import { imagesToPreload } from "./data/imagesToPreload";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -21,7 +22,7 @@ export default function App() {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1,
-      smoothTouch: true, // Enabled for mobile as requested
+      syncTouch: true, // Enabled for mobile as requested (replaces smoothTouch)
       touchMultiplier: 2,
     });
 
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/all-events" element={<AllEvents />} />
         <Route path="/coming-soon" element={<ComingSoonEvents />} />
       </Routes>
+      <AudioPlayer />
     </Preloader>
   );
 }
