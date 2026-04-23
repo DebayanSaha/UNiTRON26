@@ -37,7 +37,7 @@ function DomainCard({ domain, index, onClick }: { domain: typeof DOMAINS[0]; ind
   return (
     <div
       ref={cardRef}
-      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-full sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:w-[320px] lg:hover:w-[340px] xl:hover:w-[380px] md:hover:z-20 cursor-pointer"
+      className="relative group overflow-hidden md:transform md:-skew-x-12 transition-all duration-700 ease-out shrink-0 w-full sm:w-[320px] md:w-[280px] lg:w-[300px] xl:w-[320px] h-[400px] md:h-[500px] lg:h-[550px] border-l border-r border-white/10 md:hover:flex-[1.25] lg:hover:flex-[1.25] md:hover:z-20 cursor-pointer flex-1"
       style={{
         backgroundColor: '#05050f',
         boxShadow: `0 10px 30px -10px ${accent}30`,

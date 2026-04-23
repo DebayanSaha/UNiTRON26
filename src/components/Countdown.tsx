@@ -95,7 +95,7 @@ export default function Countdown() {
   return (
     <>
       {/* ── DESKTOP VIEW (EXACT USER CODE) ── */}
-      <section className="relative hidden md:block -mt-[280px] lg:-mt-[340px] z-20 px-10 mb-10 pointer-events-none">
+      <section className="relative hidden md:block -mt-[200px] lg:-mt-[250px] z-20 px-10 mb-10 pointer-events-none">
         <div
           ref={sectionRef}
           /* Removed rounded-xl to let the sharp polygon take over */
