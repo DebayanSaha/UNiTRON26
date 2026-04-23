@@ -135,20 +135,18 @@ export default function GlimpsesOfPast() {
       <div className="max-w-[1800px] w-full mx-auto mb-24">
 
         {/* HEADER SECTION */}
-        <LaserReveal>
-          <div className="mb-8 pl-2 lg:pl-0 text-center md:text-left">
-            <div className="mono text-xs text-white/40 tracking-[0.4em] mb-2 uppercase">My NFS System</div>
-            <h2 className="racing-title text-4xl md:text-5xl lg:text-7xl text-white font-black uppercase tracking-tight leading-none mb-4">
-              Glimpses of <span className="neon-text-cyan">Past</span>
-            </h2>
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
-              <span className="text-gray-500 text-xs tracking-[0.35em] uppercase font-mono">
-                {allImages.length} captures
-              </span>
-              <div className="h-px w-[120px] bg-gradient-to-r from-[#FF00A8]/70 to-transparent"></div>
-            </div>
+        <div className="mb-8 pl-2 lg:pl-0 text-center md:text-left">
+          <div className="mono text-xs text-white/40 tracking-[0.4em] mb-2 uppercase">My NFS System</div>
+          <h2 className="racing-title text-4xl md:text-5xl lg:text-7xl text-white font-black uppercase tracking-tight leading-none mb-4">
+            Glimpses of <span className="neon-text-cyan">Past</span>
+          </h2>
+          <div className="flex items-center justify-center md:justify-start gap-4 mb-3">
+            <span className="text-gray-500 text-xs tracking-[0.35em] uppercase font-mono">
+              {allImages.length} captures
+            </span>
+            <div className="h-px w-[120px] bg-gradient-to-r from-[#FF00A8]/70 to-transparent"></div>
           </div>
-        </LaserReveal>
+        </div>
 
         {/* CLEAN MASONRY GRID SECTION */}
         <div ref={masonryRef} className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 relative z-20 mt-12">
