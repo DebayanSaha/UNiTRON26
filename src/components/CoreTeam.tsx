@@ -38,7 +38,6 @@ const TEAM: RoleGroup[] = [
     icon: '',
     members: [
       { name: 'Bishal Maity', designation: 'Mentor', image: '/TEAM/Bishal.jpg' },
-      { name: 'Arpita Singh', designation: 'Mentor', image: '/TEAM/Arpita.jpg' },
       { name: 'Debayan Das', designation: 'Mentor', image: '/TEAM/Debayan.webp' },
       { name: 'Sayan Maity', designation: 'Mentor', image: '/TEAM/Sayan.jpg' },
       { name: 'Sudipta Sanyal', designation: 'Mentor', image: '/TEAM/Sudipta.jpg' },
@@ -53,7 +52,7 @@ const TEAM: RoleGroup[] = [
     members: [
       { name: 'Ariyan Roy', designation: 'President', image: '/TEAM/Ariyan.jpg' },
       { name: 'Asmita Guha', designation: 'Secretary', image: '/TEAM/Asmita.jpeg' },
-      { name: 'Soumadeep Barui', designation: 'Treasurer', image: '/TEAM/Barui.jpg' },
+      { name: 'Saumyadeep Barui', designation: 'Treasurer', image: '/TEAM/Barui.jpg' },
       { name: 'Rupsa Pal', designation: 'Adminstrator', image: '/TEAM/Rupsa.jpeg' },
     ],
   },

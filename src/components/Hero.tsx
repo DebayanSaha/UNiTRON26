@@ -46,8 +46,7 @@ export default function Hero() {
         autoPlay muted loop playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 brightness-110 contrast-125 saturate-150 scale-105"
       >
-        <source src="/BG.mp4" type="video/mp4" />
-        <source src="/hero-bg.webm" type="video/webm" />
+        <source src="/BG.webm" type="video/webm" />
       </video>
 
       {/* ── OVERLAY LAYERS ── */}
@@ -175,7 +174,7 @@ export default function Hero() {
           >
             THE GRAND TECHNICAL SYMPOSIUM
             <br />
-            WHERE INNOVATION MEETS PASSION.
+            WHERE INNOVATION MEETS PASSION
           </p>
 
           {/* BUTTONS */}

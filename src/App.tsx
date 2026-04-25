@@ -45,7 +45,9 @@ export default function App() {
   }, []);
 
   return (
-    <Preloader images={imagesToPreload}>
+    <Preloader images={imagesToPreload}
+      videos={["/BG.webm"]}
+    >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/all-events" element={<AllEvents />} />

@@ -6,19 +6,42 @@ export default function AudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Look for bgm.mp3 in the public folder.
-    // If you have a different filename, change it here!
-    audioRef.current = new Audio('/BGM.mpeg');
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.7; // Set a comfortable default volume
+  audioRef.current = new Audio('/BGM.mpeg');
+  audioRef.current.loop = true;
+  audioRef.current.volume = 0.7;
 
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
+  // Try autoplay after loading
+  const tryAutoPlay = async () => {
+    try {
+      await audioRef.current?.play();
+      setIsPlaying(true);
+    } catch (err) {
+      console.log("Autoplay blocked");
+    }
+  };
+
+  setTimeout(() => {
+    tryAutoPlay();
+  }, 1500); // adjust to match your loading screen duration
+
+  // Fallback: play on first user interaction
+  const handleFirstInteraction = () => {
+    audioRef.current?.play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {});
+    window.removeEventListener('click', handleFirstInteraction);
+  };
+
+  window.addEventListener('click', handleFirstInteraction);
+
+  return () => {
+    window.removeEventListener('click', handleFirstInteraction);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+  };
+}, []);
 
   const togglePlay = () => {
     if (audioRef.current) {
