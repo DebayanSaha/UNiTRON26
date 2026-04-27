@@ -45,5 +45,6 @@ export const imagesToPreload = [
   '/Ronaldo.jpg',
   '/Tabcount.png',
   '/triplelogo.jpeg',
-  '/unitron.png'
+  '/unitron.png',
+  '/DeathRace.jpeg'
 ];

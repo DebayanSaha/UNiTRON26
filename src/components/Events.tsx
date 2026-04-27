@@ -118,8 +118,7 @@ export default function Events() {
   }, []);
 
   const handleDomainClick = (domainId: string) => {
-    // navigate('/all-events', { state: { filter: domainId } });
-    navigate('/coming-soon');
+    navigate('/all-events', { state: { filter: domainId } });
     window.scrollTo(0, 0); // scroll to top when navigating
   };
 

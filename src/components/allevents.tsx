@@ -21,363 +21,29 @@ interface EventData {
   domain: 'tech' | 'gaming' | 'coding' | 'non-tech';
   description: string;
   rulebook: string;
+  registerLink?: string;
+  prizePool?: string;
+  entryFee?: string;
+  coordinator?: string;
 }
 
 const eventsData: EventData[] = [
   {
-    title: 'FREE FIRE',
-    tagline: 'Battle Royale Survival',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '4 PLAYERS',
-    icon: '🎮',
-    featured: true,
-    domain: 'gaming',
-    description: 'Drop into the battleground, loot up, and survive. Prove your squad\'s tactical superiority in high-stakes Free Fire matches.',
-    rulebook: '#',
-  },
-  {
-    title: 'BGMI',
-    tagline: 'Chicken Dinner Awaits',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '4 PLAYERS',
-    icon: '🔫',
-    domain: 'gaming',
-    description: 'The ultimate battle royale experience. Coordinate with your squad, survive the zone, and secure the Winner Winner Chicken Dinner.',
-    rulebook: '#',
-  },
-  {
-    title: 'PES',
-    tagline: 'Virtual Pitch Glory',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '1 PLAYER',
-    icon: '⚽',
-    domain: 'gaming',
-    description: 'Take control of your favorite football clubs and outplay your opponents on the virtual pitch in intense PES matches.',
-    rulebook: '#',
-  },
-  {
-    title: 'FIFA',
-    tagline: 'Kickoff to Victory',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '1 PLAYER',
-    icon: '⚽',
-    domain: 'gaming',
-    description: 'Experience the thrill of competitive FIFA. Showcase your dribbling, passing, and shooting skills to become the champion.',
-    rulebook: '#',
-  },
-  {
-    title: 'VALORANT',
-    tagline: 'Tactical Hero Shooter',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '5 PLAYERS',
-    icon: '🎯',
-    featured: true,
-    domain: 'gaming',
-    description: '5v5 character-based tactical shooter. Combine precise gunplay with unique agent abilities to secure rounds and win the match.',
-    rulebook: '#',
-  },
-  {
-    title: 'CALL OF DUTY',
-    tagline: 'Modern Warfare Mobile',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '4 PLAYERS',
-    icon: '🪖',
-    domain: 'gaming',
-    description: 'Fast-paced multiplayer action. Dominate the maps in various game modes and lead your team to victory in Call of Duty Mobile.',
-    rulebook: '#',
-  },
-  {
-    title: 'MINI MILITIA',
-    tagline: '2D Multiplayer Combat',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '1 PLAYER',
-    icon: '🚁',
-    domain: 'gaming',
-    description: 'Intense 2D multiplayer combat. Grab your jetpack and weapons, and battle it out in chaotic free-for-all matches.',
-    rulebook: '#',
-  },
-  {
-    title: 'ASPHALT',
-    tagline: 'Arcade Racing Legends',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'ESPORTS ZONE',
-    team: '1 PLAYER',
-    icon: '🏎️',
-    domain: 'gaming',
-    description: 'High-speed arcade racing. Drift, boost, and perform stunts to cross the finish line first in Asphalt.',
-    rulebook: '#',
-  },
-  {
-    title: 'LUDO',
-    tagline: 'Classic Board Showdown',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CASUAL ZONE',
-    team: '1 PLAYER',
-    icon: '🎲',
-    domain: 'gaming',
-    description: 'A digital twist on the classic board game. Roll the dice, plan your moves, and race your tokens to the finish.',
-    rulebook: '#',
-  },
-  {
-    title: 'UNO',
-    tagline: 'Draw Four, Ruin Friendships',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CASUAL ZONE',
-    team: '1 PLAYER',
-    icon: '🃏',
-    domain: 'gaming',
-    description: 'The fast-paced card game of matching colors and numbers. Play your cards right and don\'t forget to yell UNO!',
-    rulebook: '#',
-  },
-  {
     title: 'DEATH RACE',
     tagline: 'Speed. Avoid. Survive the deadly track!',
-    image: '/event-race.png',
-    date: '24 - 25 AUG 2K26',
+    image: '/EP/DeathRace.jpeg',
+    date: '08-09 MAY 2K26',
     venue: 'UNITRON ARENA',
-    team: '2 - 4 PLAYERS',
+    team: '4 PLAYERS',
     icon: '💀',
     featured: true,
     domain: 'tech',
-    description: 'Build an RC car that can survive a brutal, trap-filled obstacle course. Speed is important, but durability and maneuvering are key to finishing the death race.',
-    rulebook: '#',
-  },
-  {
-    title: 'ROBO SOCCER',
-    tagline: 'Kick. Score. Dominate the pitch!',
-    image: '/event-robowar.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'UNITRON ARENA',
-    team: '2 - 4 PLAYERS',
-    icon: '⚽',
-    domain: 'tech',
-    description: 'Take the field with your custom-built remote-controlled robots. Pass, tackle, and score goals against the opposing team in an action-packed robotic soccer tournament.',
-    rulebook: '#',
-  },
-  {
-    title: 'WATER ROCKET',
-    tagline: 'Pressurize. Launch. Touch the sky!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'MAIN GROUND',
-    team: '1 - 3 PLAYERS',
-    icon: '🚀',
-    domain: 'tech',
-    description: 'Design and build aerodynamic water rockets using plastic bottles. Competitors will be judged on maximum flight time, altitude, and creative parachute deployment mechanisms.',
-    rulebook: '#',
-  },
-  {
-    title: 'ROBO WAR',
-    tagline: 'Design. Destroy. Let machines battle!',
-    image: '/event-robowar.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'BATTLE DOME',
-    team: '3 - 5 PLAYERS',
-    icon: '🤖',
-    featured: true,
-    domain: 'tech',
-    description: 'Engineer a combat robot and throw it into the arena. ROBO WAR is the ultimate test of mechanical design, electronics, and battle strategy. Your machine must survive hits and outlast every opponent.',
-    rulebook: '#',
-  },
-  {
-    title: 'ROBO RACE',
-    tagline: 'Double the speed, double the thrill!',
-    image: '/event-race.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'UNITRON ARENA',
-    team: '2 - 4 PLAYERS',
-    icon: '🏎️',
-    domain: 'tech',
-    description: 'Bring your custom-built remote-controlled cars and navigate a high-speed racing track. Race against the clock and other competitors to claim the championship trophy.',
-    rulebook: '#',
-  },
-  {
-    title: 'QUIZ MASTER',
-    tagline: 'Think fast. Answer faster. Own the stage!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'MAIN HALL',
-    team: '2 PLAYERS',
-    icon: '🧩',
-    domain: 'non-tech',
-    description:
-      'A high-octane tech quiz spanning computer science, current affairs, science, and pop culture. Multiple rounds including rapid fire, visuals, and buzzer rounds. The questions get harder, the crowd gets louder, and only the sharpest minds survive to the finale.',
-    rulebook: '/rulebooks/quiz-rulebook.pdf',
-  },
-  {
-    title: 'PAPER PRESENT',
-    tagline: 'Research. Present. Inspire the crowd!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'SEMINAR HALL',
-    team: '1 - 2 PLAYERS',
-    icon: '📄',
-    domain: 'non-tech',
-    description:
-      'Present your original research to a panel of expert judges. Topics span all domains of engineering and technology. Papers are evaluated on novelty, depth, presentation clarity, and Q&A performance. Published proceedings available for top-ranked submissions.',
-    rulebook: '/rulebooks/paper-rulebook.pdf',
-  },
-  {
-    title: 'TECH DEBATE',
-    tagline: 'Argue. Convince. Win the tech war of words!',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'AUDITORIUM',
-    team: '2 PLAYERS',
-    icon: '🎤',
-    domain: 'non-tech',
-    description:
-      'Two teams. One controversial tech topic. Fight it out with facts, wit, and rhetoric. Topics are drawn at random — teams get 10 minutes to prepare, then it\'s live on stage. Judged on argument strength, rebuttals, and audience impact. The best debater wins hearts and minds.',
-    rulebook: '/rulebooks/debate-rulebook.pdf',
-  },
-  {
-    title: 'NITRO CIRCUITS',
-    tagline: 'Arduino Based Coding',
-    image: '/event-circuit.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'LAB 1',
-    team: '1 - 2 PLAYERS',
-    icon: '⚡',
-    domain: 'coding',
-    description: 'A challenge focusing on Arduino based coding and circuit logic. Combine hardware and software to solve complex real-world problems.',
-    rulebook: '#',
-  },
-  {
-    title: 'BUG BREAKDOWN',
-    tagline: 'Syntax Sabotage',
-    image: '/event-hackathon.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'LAB 2',
-    team: '1 PLAYER',
-    icon: '🐛',
-    domain: 'coding',
-    description: 'Find and fix the bugs in heavily sabotaged code. Test your debugging skills across various programming languages under a strict time limit.',
-    rulebook: '#',
-  },
-  {
-    title: 'FRONTEND FURY',
-    tagline: 'Css Battle',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'LAB 3',
-    team: '1 PLAYER',
-    icon: '🎨',
-    domain: 'coding',
-    description: 'Replicate complex UI designs using only HTML and CSS. No images, no SVGs, no JS. Just pure CSS styling skills and pixel-perfect precision.',
-    rulebook: '#',
-  },
-  {
-    title: 'BACKTRACK BURNOUT',
-    tagline: 'Reverse Coding',
-    image: '/event-ai.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'LAB 4',
-    team: '1 - 2 PLAYERS',
-    icon: '🔄',
-    domain: 'coding',
-    description: 'Given an executable or output pattern, write the code that generates it. Think backwards, analyze the behavior, and reconstruct the logic.',
-    rulebook: '#',
-  },
-  {
-    title: 'OUTRUN THE HEAT',
-    tagline: 'Hurdle Race',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: 'VARIES',
-    icon: '🏃',
-    domain: 'non-tech',
-    description: 'A thrilling hurdle race that will test your speed, agility, and endurance.',
-    rulebook: '#',
-  },
-  {
-    title: "THE OUTLAW'S CACHE",
-    tagline: 'Treasure Hunt',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: 'TEAM',
-    icon: '🗺️',
-    domain: 'non-tech',
-    description: 'Follow the clues, solve the riddles, and discover the hidden cache before time runs out.',
-    rulebook: '#',
-  },
-  {
-    title: 'THE MOTION GALLERY',
-    tagline: 'Photography',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: '1 PLAYER',
-    icon: '📸',
-    domain: 'non-tech',
-    description: 'Capture the essence of motion and emotion. Show us your best photographic skills.',
-    rulebook: '#',
-  },
-  {
-    title: 'UNDERGROUND UTOPIA',
-    tagline: 'Carnival',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: 'ALL',
-    icon: '🎪',
-    domain: 'non-tech',
-    description: 'Experience the ultimate carnival vibe with games, music, and an unforgettable utopian atmosphere.',
-    rulebook: '#',
-  },
-  {
-    title: 'VISUAL REPUTATION',
-    tagline: 'Drawing',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: '1 PLAYER',
-    icon: '🖌️',
-    domain: 'non-tech',
-    description: 'Express your artistic vision. Bring your imagination to life on the canvas.',
-    rulebook: '#',
-  },
-  {
-    title: 'AIRBORNE CONNECTION',
-    tagline: 'Span The Gap',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: 'TEAM',
-    icon: '🌉',
-    domain: 'non-tech',
-    description: 'Design and build a bridge structure that can span the gap and hold maximum weight.',
-    rulebook: '#',
-  },
-  {
-    title: 'RAPID RESPONSE',
-    tagline: 'Tech Quiz',
-    image: '/event-gaming.png',
-    date: '24 - 25 AUG 2K26',
-    venue: 'CAMPUS',
-    team: 'TEAM',
-    icon: '💡',
-    domain: 'non-tech',
-    description: 'Test your knowledge on the latest tech trends, trivia, and innovations in this fast-paced quiz.',
-    rulebook: '#',
+    description: 'Build a bot that can survive a brutal, trap-filled obstacle course. Speed is important, but durability and maneuvering are key to finishing the death race.',
+    rulebook: '/Rulebook/DEATHRACE_RULEBOOK 26.pdf',
+    registerLink: "https://docs.google.com/forms/d/e/1FAIpQLSeB8GCU9Pc6yXz9VlrJJtrjTkcTq03D8UAngUy12MwwOseu8Q/viewform",
+    prizePool: 'Rs 10,000',
+    entryFee: 'Rs 400/-',
+    coordinator: 'HIMANGSHU SINGH (8100639881)'
   },
 ];
 
@@ -392,7 +58,7 @@ function HexIcon({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: 'relative', width: 48, height: 48, flexShrink: 0 }}>
       <div style={{ position: 'absolute', inset: 0, clipPath: HEX_CLIP, background: 'rgba(255,0,168,0.8)', boxShadow: '0 0 12px rgba(255,0,168,0.5)' }} />
-      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(10,10,24,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
+      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(5,5,15,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
         {children}
       </div>
     </div>
@@ -403,7 +69,7 @@ function TrophyHex() {
   return (
     <div style={{ position: 'relative', width: 52, height: 52, flexShrink: 0 }}>
       <div style={{ position: 'absolute', inset: 0, clipPath: HEX_CLIP, background: 'rgba(255,255,255,0.55)', boxShadow: '0 0 12px rgba(255,255,255,0.4)' }} />
-      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(10,10,28,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(5,5,15,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8">
           <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
           <path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22" />
@@ -414,40 +80,56 @@ function TrophyHex() {
   );
 }
 
-function CalendarIcon() {
+function CalendarIcon({ color = '#FF00A8' }: { color?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF00A8" strokeWidth="2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
       <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" />
       <line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
     </svg>
   );
 }
 
-function PinIcon() {
+function PinIcon({ color = '#FF00A8' }: { color?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF00A8" strokeWidth="2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
     </svg>
   );
 }
 
-function TeamIcon() {
+function TeamIcon({ color = '#FF00A8' }: { color?: string }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF00A8" strokeWidth="2">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>
   );
 }
 
+export const DOMAIN_COLORS: Record<string, string> = {
+  tech: '#00F0FF',
+  gaming: '#7FFF00',
+  coding: '#00FF99',
+  'non-tech': '#FF00A8',
+};
+
+const getDomainColor = (domain: string) => DOMAIN_COLORS[domain] || '#00F0FF';
+
+const hexToRgb = (hex: string) => {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16) || 0;
+  const g = parseInt(h.substring(2, 4), 16) || 0;
+  const b = parseInt(h.substring(4, 6), 16) || 0;
+  return `${r},${g},${b}`;
+};
+
 /* ─────────────────────────────────────────
    SWIPE REGISTER BUTTON
 ───────────────────────────────────────── */
-function RegisterButton({ onClick }: { onClick: () => void }) {
-  const btnRef = useRef<HTMLButtonElement>(null);
+function RegisterButton({ onClick, href, accent = '#FF00A8' }: { onClick?: () => void; href?: string; accent?: string }) {
   const shineRef = useRef<HTMLSpanElement>(null);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (shineRef.current) {
       gsap.fromTo(
         shineRef.current,
@@ -455,38 +137,20 @@ function RegisterButton({ onClick }: { onClick: () => void }) {
         { x: '200%', opacity: 0, duration: 0.55, ease: 'power2.out' }
       );
     }
-    if (btnRef.current) {
-      btnRef.current.style.background = 'rgba(255,0,168,0.18)';
-      btnRef.current.style.boxShadow = '0 0 22px rgba(255,0,168,0.35), inset 0 0 16px rgba(255,0,168,0.08)';
-    }
+    e.currentTarget.style.background = `${accent}30`;
+    e.currentTarget.style.boxShadow = `0 0 22px ${accent}60, inset 0 0 16px ${accent}20`;
   };
 
-  const handleMouseLeave = () => {
-    if (btnRef.current) {
-      btnRef.current.style.background = 'rgba(255,0,168,0.06)';
-      btnRef.current.style.boxShadow = 'none';
-    }
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+    e.currentTarget.style.background = `${accent}10`;
+    e.currentTarget.style.boxShadow = 'none';
   };
 
-  return (
-    <button
-      ref={btnRef}
-      onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="w-full py-3 text-xs font-heading tracking-[0.25em] uppercase relative overflow-hidden"
-      style={{
-        clipPath: CLIP,
-        background: 'rgba(255,0,168,0.06)',
-        border: 'none',
-        outline: 'none',
-        cursor: 'pointer',
-        transition: 'background 0.3s ease, box-shadow 0.3s ease',
-      }}
-    >
+  const innerContent = (
+    <>
       {/* Neon border */}
-      <span className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, #FF00A8, #00F0FF)', clipPath: CLIP, opacity: 0.5 }} />
-      <span className="absolute pointer-events-none" style={{ inset: '1.5px', background: 'rgba(7,7,26,0.88)', clipPath: INNER_CLIP }} />
+      <span className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(90deg, ${accent}, transparent)`, clipPath: CLIP, opacity: 0.5 }} />
+      <span className="absolute pointer-events-none" style={{ inset: '1.5px', background: 'rgba(5,5,15,0.88)', clipPath: INNER_CLIP }} />
       {/* Swipe shine */}
       <span
         ref={shineRef}
@@ -500,9 +164,34 @@ function RegisterButton({ onClick }: { onClick: () => void }) {
         }}
       />
       {/* Label */}
-      <span className="relative z-10" style={{ background: 'linear-gradient(90deg, #FF00A8, #cc66ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+      <span className="relative z-10" style={{ color: accent, textShadow: `0 0 8px ${accent}80` }}>
         REGISTER NOW →
       </span>
+    </>
+  );
+
+  const commonClasses = "w-full py-3 text-xs font-heading tracking-[0.25em] uppercase relative overflow-hidden block text-center";
+  const commonStyles = {
+    clipPath: CLIP,
+    background: `${accent}10`,
+    border: 'none',
+    outline: 'none',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    transition: 'background 0.3s ease, box-shadow 0.3s ease',
+  };
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={commonClasses} style={commonStyles}>
+        {innerContent}
+      </a>
+    );
+  }
+
+  return (
+    <button onClick={onClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={commonClasses} style={commonStyles}>
+      {innerContent}
     </button>
   );
 }
@@ -511,6 +200,8 @@ function RegisterButton({ onClick }: { onClick: () => void }) {
    EVENT DETAIL POPUP
 ───────────────────────────────────────── */
 function EventPopup({ event, onClose }: { event: EventData; onClose: () => void }) {
+  const accent = DOMAIN_COLORS[event.domain] || '#FF00A8';
+  const rgb = hexToRgb(accent);
   const overlayRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -530,7 +221,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
     <div
       ref={overlayRef}
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4"
-      style={{ background: 'rgba(3,3,15,0.85)', backdropFilter: 'blur(8px)' }}
+      style={{ background: 'rgba(3,3,10,0.85)', backdropFilter: 'blur(8px)' }}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
       {/*
@@ -549,36 +240,35 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
         }}
       >
         {/* Border */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, #FF00A8, #00F0FF, #FF00A8)', clipPath: CLIP }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(135deg, ${accent}, transparent, ${accent})`, clipPath: CLIP }} />
 
         {/* Panel body — flex-col on mobile, flex-row on md+ */}
         <div
+          data-lenis-prevent="true"
           className="relative flex flex-col md:flex-row overflow-y-auto"
-          style={{ margin: '1.5px', background: '#07071a', clipPath: INNER_CLIP, maxHeight: 'calc(92dvh - 3px)' }}
+          style={{ margin: '1.5px', background: '#05050f', clipPath: INNER_CLIP, maxHeight: 'calc(92dvh - 3px)' }}
         >
           {/*
             LEFT (desktop) / TOP (mobile) — image
-            Mobile: shorter fixed height banner
-            Desktop: 40% width, min-height 280 (unchanged)
+            Mobile: shorter fixed height banner with object-cover
+            Desktop: width fits image aspect ratio to avoid left/right gaps
           */}
           <div
-            className="relative flex-shrink-0 md:w-2/5"
-            style={{ height: 200, minHeight: 200 }}
+            className="relative flex-shrink-0 w-full md:w-fit md:max-w-[45%]"
           >
-            {/* On md+ override to fill full height of panel */}
-            <style>{`@media (min-width: 768px) { .popup-img-wrap { height: 100% !important; min-height: 380px !important; } }`}</style>
-            <div className="popup-img-wrap w-full h-full">
-              <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
+            <style>{`
+              .popup-img-wrap { height: 200px; width: 100%; }
+              @media (min-width: 768px) { 
+                .popup-img-wrap { 
+                  height: 100%; 
+                  min-height: 380px;
+                  width: fit-content; 
+                } 
+              }
+            `}</style>
+            <div className="popup-img-wrap bg-[#0a0a1a]">
+              <img src={event.image} alt={event.title} className="w-full h-full object-cover md:w-auto md:max-w-full md:object-contain" />
             </div>
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent 55%, #07071a 100%), linear-gradient(to top, rgba(7,7,26,0.85) 0%, rgba(7,7,26,0.3) 25%, transparent 50%)' }} />
-            {event.featured && (
-              <div
-                className="absolute top-3 left-3 px-2.5 py-1 text-[9px] font-heading tracking-[0.2em] uppercase"
-                style={{ border: '2px solid #FF00A8', color: '#FF00A8', borderRadius: 4, background: 'rgba(255,0,168,0.18)', boxShadow: '0 0 14px rgba(255,0,168,0.7)', textShadow: '0 0 8px rgba(255,0,168,0.8)' }}
-              >
-                FEATURED
-              </div>
-            )}
           </div>
 
           {/* RIGHT (desktop) / BOTTOM (mobile) — details */}
@@ -587,7 +277,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
             <button
               onClick={onClose}
               className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center transition-opacity hover:opacity-60"
-              style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(7,7,26,0.7)', border: 'none', cursor: 'pointer', zIndex: 10, borderRadius: 4 }}
+              style={{ color: 'rgba(255,255,255,0.6)', background: 'rgba(5,5,15,0.7)', border: 'none', cursor: 'pointer', zIndex: 10, borderRadius: 4 }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
@@ -596,7 +286,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
 
             {/* Title */}
             <div>
-              <p className="text-[9px] sm:text-[10px] font-heading tracking-[0.3em] uppercase mb-1" style={{ color: '#00F0FF' }}>EVENT DETAILS</p>
+              <p className="text-[9px] sm:text-[10px] font-heading tracking-[0.3em] uppercase mb-1" style={{ color: accent }}>EVENT DETAILS</p>
               <h2
                 className="font-nfs text-2xl sm:text-3xl tracking-wider uppercase pr-2"
                 style={{ background: 'linear-gradient(90deg,#fff,#aaa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
@@ -612,23 +302,23 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
             {/* Info row — wraps naturally on mobile */}
             <div className="flex gap-3 sm:gap-4 flex-wrap text-xs font-heading tracking-wider">
               <div className="flex items-center gap-1.5">
-                <CalendarIcon />
+                <CalendarIcon color={accent} />
                 <div>
-                  <div style={{ color: '#FF00A8', fontSize: 9, letterSpacing: '0.25em' }}>DATE</div>
+                  <div style={{ color: accent, fontSize: 9, letterSpacing: '0.25em' }}>DATE</div>
                   <div className="text-gray-200">{event.date}</div>
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
-                <PinIcon />
+                <PinIcon color={accent} />
                 <div>
-                  <div style={{ color: '#FF00A8', fontSize: 9, letterSpacing: '0.25em' }}>VENUE</div>
+                  <div style={{ color: accent, fontSize: 9, letterSpacing: '0.25em' }}>VENUE</div>
                   <div className="text-gray-200">{event.venue}</div>
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
-                <TeamIcon />
+                <TeamIcon color={accent} />
                 <div>
-                  <div style={{ color: '#FF00A8', fontSize: 9, letterSpacing: '0.25em' }}>TEAM</div>
+                  <div style={{ color: accent, fontSize: 9, letterSpacing: '0.25em' }}>TEAM</div>
                   <div className="text-gray-200">{event.team}</div>
                 </div>
               </div>
@@ -638,25 +328,57 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
             <div className="w-full h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)' }} />
 
             {/* Description */}
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed" style={{ lineHeight: 1.75 }}>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed" style={{ lineHeight: 1.75 }}>
               {event.description}
             </p>
 
-            {/* Action buttons — stack on mobile, side by side on sm+ */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-2">
-              <RegisterButton onClick={() => { }} />
+            {/* Highlights */}
+            {(event.prizePool || event.entryFee || event.coordinator) && (
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-2 mb-2">
+                {event.prizePool && (
+                  <div className="flex-1 min-w-[140px] px-4 py-3 rounded-md" style={{ background: 'rgba(0,240,255,0.08)', border: '1px solid rgba(0,240,255,0.2)' }}>
+                    <div className="text-[10px] font-heading tracking-widest text-[#00F0FF] mb-1 uppercase">PRIZE POOL</div>
+                    <div className="text-lg sm:text-xl font-bold text-white tracking-wide">{event.prizePool}</div>
+                  </div>
+                )}
+                {event.entryFee && (
+                  <div className="flex-1 min-w-[140px] px-4 py-3 rounded-md" style={{ background: 'rgba(255,0,168,0.08)', border: '1px solid rgba(255,0,168,0.2)' }}>
+                    <div className="text-[10px] font-heading tracking-widest text-[#FF00A8] mb-1 uppercase">ENTRY FEE</div>
+                    <div className="text-lg sm:text-xl font-bold text-white tracking-wide">{event.entryFee}</div>
+                  </div>
+                )}
+                {event.coordinator && (
+                  <div className="w-full px-4 py-3 rounded-md" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div className="text-[10px] font-heading tracking-widest text-gray-400 mb-1 uppercase">COORDINATOR</div>
+                    <div className="text-sm sm:text-base text-gray-200">{event.coordinator}</div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Action buttons — stack row-wise and make them more visible */}
+            <div className="flex flex-col w-full gap-4 mt-auto pt-0">
+              <div className="flex-1">
+                <RegisterButton href={event.registerLink || '#'} accent={accent} />
+              </div>
               <a
                 href={event.rulebook}
                 download
-                className="flex items-center justify-center gap-2 px-4 py-3 text-xs font-heading tracking-[0.18em] uppercase relative overflow-hidden no-underline sm:flex-shrink-0"
-                style={{ clipPath: CLIP, color: '#00F0FF', textDecoration: 'none', transition: 'background 0.3s ease' }}
-                onMouseOver={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(0,240,255,0.1)'; }}
-                onMouseOut={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; }}
+                className="flex-1 flex items-center justify-center gap-2 px-2 sm:px-4 py-4 text-[10px] sm:text-xs md:text-md font-heading tracking-[0.18em] uppercase relative overflow-hidden no-underline"
+                style={{ clipPath: CLIP, color: '#fff', textDecoration: 'none', transition: 'all 0.3s ease', background: `rgba(${rgb}, 0.25)`, border: `1px solid rgba(${rgb}, 0.5)` }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.4)`;
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 15px rgba(${rgb}, 0.4), inset 0 0 10px rgba(${rgb}, 0.2)`;
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.25)`;
+                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
+                }}
               >
-                <span className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, #00F0FF, #0066FF)', clipPath: CLIP, opacity: 0.5 }} />
-                <span className="absolute pointer-events-none" style={{ inset: '1.5px', background: 'rgba(7,7,26,0.88)', clipPath: INNER_CLIP }} />
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="2">
+                <span className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(90deg, ${accent}, transparent)`, clipPath: CLIP, opacity: 0.6 }} />
+                <span className="absolute pointer-events-none" style={{ inset: '1.5px', background: 'rgba(5,5,15,0.7)', clipPath: INNER_CLIP }} />
+                <span className="relative z-10 flex items-center gap-2 font-bold drop-shadow-md md:text-md">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" className="hidden sm:block">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
@@ -677,6 +399,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
    image click opens popup
 ───────────────────────────────────────── */
 function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) {
+  const accent = DOMAIN_COLORS[event.domain] || '#FF00A8';
   return (
     /*
       BORDER TECHNIQUE:
@@ -688,7 +411,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
       className="group flex flex-col h-full"
       style={{
         clipPath: CLIP,
-        background: 'linear-gradient(135deg, #FF00A8 0%, #00F0FF 50%, #FF00A8 100%)',
+        background: `linear-gradient(135deg, ${accent} 0%, transparent 50%, ${accent} 100%)`,
         padding: 0,
       }}
     >
@@ -697,7 +420,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
         style={{
           margin: '1.5px',
           clipPath: INNER_CLIP,
-          background: '#07071a',
+          background: '#05050f',
         }}
       >
 
@@ -711,22 +434,13 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
             src={event.image}
             alt={event.title}
             className="w-full h-full object-cover transition-transform duration-500"
-            style={{ display: 'block', background: '#0d0d22' }}
+            style={{ display: 'block', background: '#0a0a1a' }}
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
           />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to top, rgba(7,7,26,1) 0%, rgba(7,7,26,0.75) 30%, rgba(7,7,26,0.15) 60%, transparent 100%)' }}
+            style={{ background: 'linear-gradient(to top, rgba(5,5,15,1) 0%, rgba(5,5,15,0.75) 30%, rgba(5,5,15,0.15) 60%, transparent 100%)' }}
           />
-
-          {event.featured && (
-            <div
-              className="absolute top-4 left-4 px-3 py-1 text-[10px] font-heading tracking-[0.2em] uppercase"
-              style={{ border: '2px solid #FF00A8', color: '#FF00A8', borderRadius: 4, background: 'rgba(255,0,168,0.18)', boxShadow: '0 0 14px rgba(255,0,168,0.7), inset 0 0 10px rgba(255,0,168,0.15)', textShadow: '0 0 8px rgba(255,0,168,0.8)' }}
-            >
-              FEATURED
-            </div>
-          )}
 
           {/* Title */}
           <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2">
@@ -752,32 +466,32 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
 
           <div className="flex items-start justify-between gap-1 text-[9px] font-heading tracking-wider">
             <div className="flex items-start gap-1" style={{ flex: '0 0 auto', maxWidth: '36%' }}>
-              <CalendarIcon />
+              <CalendarIcon color={accent} />
               <div>
-                <div className="uppercase mb-0.5" style={{ color: '#FF00A8', fontSize: 8, letterSpacing: '0.2em' }}>DATE</div>
+                <div className="uppercase mb-0.5" style={{ color: accent, fontSize: 8, letterSpacing: '0.2em' }}>DATE</div>
                 <div className="text-gray-200 leading-tight">{event.date}</div>
               </div>
             </div>
             <div className="w-px self-stretch flex-shrink-0" style={{ background: 'rgba(255,255,255,0.12)' }} />
             <div className="flex items-start gap-1 min-w-0" style={{ flex: '0 0 auto', maxWidth: '30%' }}>
-              <PinIcon />
+              <PinIcon color={accent} />
               <div className="min-w-0">
-                <div className="uppercase mb-0.5" style={{ color: '#FF00A8', fontSize: 8, letterSpacing: '0.2em' }}>VENUE</div>
+                <div className="uppercase mb-0.5" style={{ color: accent, fontSize: 8, letterSpacing: '0.2em' }}>VENUE</div>
                 <div className="text-gray-200 leading-tight truncate">{event.venue}</div>
               </div>
             </div>
             <div className="w-px self-stretch flex-shrink-0" style={{ background: 'rgba(255,255,255,0.12)' }} />
             <div className="flex items-start gap-1" style={{ flex: '0 0 auto', maxWidth: '28%' }}>
-              <TeamIcon />
+              <TeamIcon color={accent} />
               <div>
-                <div className="uppercase mb-0.5" style={{ color: '#FF00A8', fontSize: 8, letterSpacing: '0.2em' }}>TEAM</div>
+                <div className="uppercase mb-0.5" style={{ color: accent, fontSize: 8, letterSpacing: '0.2em' }}>TEAM</div>
                 <div className="text-gray-200 leading-tight">{event.team}</div>
               </div>
             </div>
           </div>
 
           <div className="mt-auto">
-            <RegisterButton onClick={onOpen} />
+            <RegisterButton onClick={onOpen} accent={accent} />
           </div>
         </div>
       </div>
@@ -793,7 +507,7 @@ function SearchInput({ value, onChange }: { value: string; onChange: (v: string)
   return (
     <div className="relative">
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(90deg, rgba(255,0,168,0.5), rgba(0,240,255,0.5))', clipPath: CLIP }} />
-      <div className="relative" style={{ margin: '1px', clipPath: INNER_CLIP, background: 'rgba(10,10,28,0.9)' }}>
+      <div className="relative" style={{ margin: '1px', clipPath: INNER_CLIP, background: 'rgba(5,5,15,0.9)' }}>
         <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2">
             <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
@@ -827,6 +541,7 @@ function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain
     <div className="flex flex-row lg:flex-col flex-nowrap sm:flex-wrap gap-3 w-fit lg:w-full">
       {TAB_LABELS.map(({ key, label }) => {
         const isActive = active === key;
+        const accent = DOMAIN_COLORS[key] || '#FF00A8';
         return (
           <button
             key={key}
@@ -834,15 +549,15 @@ function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain
             className="relative px-5 py-2 lg:py-4 lg:text-sm lg:w-full text-xs font-heading tracking-[0.2em] uppercase transition-all duration-200"
             style={{
               clipPath: CLIP,
-              background: isActive ? 'rgba(255,0,168,0.18)' : 'rgba(255,255,255,0.04)',
-              color: isActive ? '#FF00A8' : 'rgba(255,255,255,0.45)',
-              boxShadow: isActive ? '0 0 16px rgba(255,0,168,0.3)' : 'none',
-              textShadow: isActive ? '0 0 8px rgba(255,0,168,0.6)' : 'none',
+              background: isActive ? `${accent}30` : 'rgba(255,255,255,0.04)',
+              color: isActive ? accent : 'rgba(255,255,255,0.45)',
+              boxShadow: isActive ? `0 0 16px ${accent}60` : 'none',
+              textShadow: isActive ? `0 0 8px ${accent}` : 'none',
               border: 'none', outline: 'none', cursor: 'pointer',
             }}
           >
-            <span className="absolute inset-0 pointer-events-none" style={{ clipPath: CLIP, background: isActive ? 'linear-gradient(90deg, #FF00A8, #00F0FF)' : 'linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1))', opacity: isActive ? 0.7 : 1 }} />
-            <span className="absolute pointer-events-none" style={{ inset: '1px', clipPath: INNER_CLIP, background: isActive ? 'rgba(10,5,28,0.9)' : 'rgba(10,10,24,0.85)' }} />
+            <span className="absolute inset-0 pointer-events-none" style={{ clipPath: CLIP, background: isActive ? `linear-gradient(90deg, ${accent}, transparent)` : 'linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1))', opacity: isActive ? 0.7 : 1 }} />
+            <span className="absolute pointer-events-none" style={{ inset: '1px', clipPath: INNER_CLIP, background: isActive ? 'rgba(5,5,15,0.9)' : 'rgba(5,5,15,0.85)' }} />
             <span className="relative z-10">{label}</span>
           </button>
         );
@@ -856,11 +571,32 @@ function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain
 ───────────────────────────────────────── */
 export default function AllEvents() {
   const location = useLocation();
-  const [active, setActive] = useState<Domain>(location.state?.filter || 'all');
+
+  // 1. Check the URL for an existing filter on initial load
+  const getInitialFilter = () => {
+    const params = new URLSearchParams(window.location.search);
+    const filterFromUrl = params.get('section');
+    return (filterFromUrl as Domain) || location.state?.filter || 'all';
+  };
+
+  const [active, setActive] = useState<Domain | 'all'>(getInitialFilter);
   const [search, setSearch] = useState('');
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  // 2. Silently update the URL whenever the 'active' tab changes
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (active === 'all') {
+      url.searchParams.delete('section');
+    } else {
+      url.searchParams.set('section', active);
+    }
+    // replaceState updates the URL without adding a new entry to browser history.
+    // (Use window.history.pushState({}, '', url) instead if you want the back button to navigate between tabs)
+    window.history.replaceState({}, '', url);
+  }, [active]);
 
   // Fuse.js instance — rebuilt only when dataset changes
   const fuse = useMemo(
@@ -875,13 +611,17 @@ export default function AllEvents() {
 
   const filtered = useMemo(() => {
     // First apply domain filter
-    const domainPool = eventsData.filter((e) => e.domain === active);
+    const domainPool = active === 'all'
+      ? eventsData
+      : eventsData.filter((e) => e.domain === active);
 
     if (!search.trim()) return domainPool;
 
     // Run fuzzy search over the full dataset, then intersect with domain
     const fuseResults = fuse.search(search).map((r) => r.item);
-    return fuseResults.filter((e) => e.domain === active);
+    return active === 'all'
+      ? fuseResults
+      : fuseResults.filter((e) => e.domain === active);
   }, [active, search, fuse]);
 
   useEffect(() => {
@@ -896,26 +636,11 @@ export default function AllEvents() {
 
   return (
     <>
-      <div className="min-h-screen text-white relative overflow-hidden">
-
-        {/* ── Frosted Background Image ── */}
-        <div className="fixed inset-0 z-0" style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(10px) brightness(0.75)', transform: 'scale(1.1)' }} />
-
-        {/* ── Dark glass overlay ── */}
-        <div className="fixed inset-0 z-0" style={{ background: 'rgba(5,5,18,0.35)', backdropFilter: 'blur(12px)' }} />
-
-        {/* ── ICY OVERLAY LAYERS ── */}
-        <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 80% 60% at 10% 20%, rgba(160,220,255,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 90% 10%, rgba(180,240,255,0.06) 0%, transparent 55%), radial-gradient(ellipse 70% 40% at 50% 90%, rgba(140,210,255,0.05) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 70%, rgba(200,240,255,0.04) 0%, transparent 50%)` }} />
-        <div className="fixed inset-0 z-0 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cg stroke='rgba(180,230,255,0.04)' stroke-width='0.8' fill='none'%3E%3Cpath d='M120 0 L180 80 L240 40 L300 120 L260 200 L320 260 L280 340 L360 380 L300 460 L380 520 L340 600'/%3E%3Cpath d='M0 150 L80 190 L60 270 L140 310 L100 390 L180 420 L160 500 L240 540'/%3E%3Cpath d='M400 0 L440 90 L500 70 L520 160 L580 140 L600 220'/%3E%3Cpath d='M180 80 L140 160 L200 180 L170 260'/%3E%3Cpath d='M300 120 L350 100 L380 170 L440 160'/%3E%3Cpath d='M260 200 L220 240 L260 300 L220 340'/%3E%3Cpath d='M80 190 L120 230 L100 280 L140 310'/%3E%3Cpath d='M440 90 L480 130 L460 200 L520 230 L500 300 L560 330'/%3E%3Cpath d='M0 350 L60 370 L40 440 L100 460 L80 540'/%3E%3Cpath d='M500 300 L540 360 L520 430 L580 460 L560 540 L600 580'/%3E%3C/g%3E%3C/svg%3E")`, backgroundSize: '600px 600px', backgroundRepeat: 'repeat', opacity: 1 }} />
-        <div className="fixed inset-0 z-0 pointer-events-none" style={{ backgroundImage: `repeating-linear-gradient(118deg, transparent 0px, transparent 60px, rgba(180,235,255,0.018) 60px, rgba(180,235,255,0.018) 61px), repeating-linear-gradient(28deg, transparent 0px, transparent 80px, rgba(160,220,255,0.015) 80px, rgba(160,220,255,0.015) 81px)` }} />
-        <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(2,4,20,0.55) 100%)' }} />
-        <div className="fixed inset-0 pointer-events-none z-0" style={{ backgroundImage: 'linear-gradient(rgba(0,240,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.025) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-
-        {/* ── TOP BAR ── */}
+      <div className="min-h-screen bg-[#03030a] text-white relative overflow-hidden">
         <div
           ref={headerRef}
           className="relative z-10 border-b"
-          style={{ borderColor: 'rgba(255,255,255,0.06)', background: 'rgba(5,5,18,0.85)', backdropFilter: 'blur(12px)' }}
+          style={{ borderColor: 'rgba(255,255,255,0.06)', background: 'rgba(3,3,10,0.85)', backdropFilter: 'blur(12px)' }}
         >
           {/* Mobile: two rows. Desktop (md+): single row unchanged */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between px-4 sm:px-6 md:px-10 py-4 md:py-6 gap-3 md:gap-0">
@@ -982,10 +707,11 @@ export default function AllEvents() {
 
             {/* Filter tabs */}
             <div
+              data-lenis-prevent="true"
               className="overflow-x-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              <FilterTabs active={active} onSelect={setActive} />
+              <FilterTabs active={active as Domain} onSelect={setActive} />
             </div>
 
             <div className="w-full h-px lg:hidden" style={{ background: 'linear-gradient(90deg, transparent, rgba(0,240,255,0.3) 30%, rgba(255,0,168,0.3) 70%, transparent)' }} />
@@ -993,17 +719,50 @@ export default function AllEvents() {
 
           {/* ── MAIN GRID (right panel — scrollable) ── */}
           <div
+            data-lenis-prevent="true"
             className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24"
             style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,0,168,0.3) transparent' }}
           >
             {filtered.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-32 gap-4">
-                <div className="text-5xl">🔍</div>
-                <p className="font-heading tracking-widest text-gray-500 uppercase text-sm">No events found</p>
-                <button onClick={() => { setSearch(''); }} className="text-xs font-heading tracking-widest uppercase text-cyan-400 underline mt-2">
-                  CLEAR FILTERS
-                </button>
-              </div>
+              search.trim() !== '' ? (
+                <div className="flex flex-col items-center justify-center py-32 gap-4">
+                  <div className="text-5xl">🔍</div>
+                  <p className="font-heading tracking-widest text-gray-500 uppercase text-sm">No events found</p>
+                  <button onClick={() => { setSearch(''); }} className="text-xs font-heading tracking-widest uppercase text-cyan-400 underline mt-2">
+                    CLEAR FILTERS
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center w-full h-full min-h-[50vh]">
+                  <div className="relative w-40 h-40 flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
+                    <div
+                      className="absolute inset-0 rounded-full border-4 border-transparent animate-spin"
+                      style={{
+                        animationDuration: '1.5s',
+                        borderTopColor: getDomainColor(active),
+                        borderLeftColor: getDomainColor(active),
+                        boxShadow: `0 0 15px rgba(${hexToRgb(getDomainColor(active))}, 0.2)`
+                      }}
+                    ></div>
+                    <div
+                      className="absolute inset-4 rounded-full animate-pulse"
+                      style={{ backgroundColor: `rgba(${hexToRgb(getDomainColor(active))}, 0.05)` }}
+                    ></div>
+                    <div className="flex flex-col items-center justify-center text-center z-10">
+                      <span className="font-nfs text-xs text-white/80 tracking-widest uppercase animate-pulse leading-tight">
+                        Coming
+                      </span>
+                      <span
+                        className="font-nfs text-xs tracking-widest uppercase animate-pulse leading-tight"
+                        style={{ color: getDomainColor(active) }}
+                      >
+                        Soon
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )
             ) : (
               <div
                 ref={gridRef}
