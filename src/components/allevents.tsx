@@ -39,7 +39,7 @@ const eventsData: EventData[] = [
     featured: true,
     domain: 'tech',
     description: 'Build a bot that can survive a brutal, trap-filled obstacle course. Speed is important, but durability and maneuvering are key to finishing the death race.',
-    rulebook: '/Rulebook/DEATHRACE_RULEBOOK 26.pdf',
+    rulebook: '/Rulebook/DEATHRACE_RULEBOOK_26.pdf',
     registerLink: "https://docs.google.com/forms/d/e/1FAIpQLSeB8GCU9Pc6yXz9VlrJJtrjTkcTq03D8UAngUy12MwwOseu8Q/viewform",
     prizePool: 'Rs 10,000',
     entryFee: 'Rs 400/-',
@@ -363,7 +363,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
               </div>
               <a
                 href={event.rulebook}
-                download
+                download={`${event.title.replace(/\s+/g, '_')}_Rulebook.pdf`}
                 className="flex-1 flex items-center justify-center gap-2 px-2 sm:px-4 py-4 text-[10px] sm:text-xs md:text-md font-heading tracking-[0.18em] uppercase relative overflow-hidden no-underline"
                 style={{ clipPath: CLIP, color: '#fff', textDecoration: 'none', transition: 'all 0.3s ease', background: `rgba(${rgb}, 0.25)`, border: `1px solid rgba(${rgb}, 0.5)` }}
                 onMouseOver={(e) => {
