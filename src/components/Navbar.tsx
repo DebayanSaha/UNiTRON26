@@ -191,12 +191,12 @@ export default function Navbar() {
 
               {/* Right: CTA + hamburger */}
               <div className="flex items-center gap-2 sm:gap-3 z-10">
-                <button
-                  ref={btnRef}
+                <a
+                  href='#events'
                   className="hidden md:block rounded-full px-4 xl:px-5 py-2 text-xs font-heading font-bold text-white border border-pink-500 hover:bg-pink-500/20 transition whitespace-nowrap"
                 >
                   REGISTER NOW
-                </button>
+                </a>
 
                 <button
                   className="lg:hidden text-white p-1.5 rounded-lg hover:bg-white/10 transition"

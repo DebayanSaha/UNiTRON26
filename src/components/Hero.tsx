@@ -144,7 +144,7 @@ export default function Hero() {
           {/* TAGLINE */}
           <p
             ref={taglineRef}
-            className="font-heading tracking-[0.3em] text-xs sm:text-sm mb-4 sm:mb-5 uppercase text-cyan-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] relative z-10"
+            className="font-heading text-center tracking-[0.3em] text-xs sm:text-sm mb-4 sm:mb-5 uppercase text-cyan-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] relative z-10 -mr-4"
           >
             The Ultimate Tech Fest
           </p>
@@ -182,9 +182,9 @@ export default function Hero() {
             ref={btnsRef}
             className="flex flex-wrap gap-4 md:gap-6 relative z-10 justify-center sm:justify-start w-full"
           >
-            <button className="btn-neon-pink bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
-              <span>REGISTRATION WILL OPEN SOON</span>
-            </button>
+            <a href="#events" className="btn-neon-pink bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
+              <span>REGISTER NOW</span>
+            </a>
             {/*<button className="btn-neon-blue bg-white/5 backdrop-blur-md font-heading flex items-center justify-center">
               <span>EXPLORE EVENTS</span>
             </button>*/}

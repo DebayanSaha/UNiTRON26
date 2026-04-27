@@ -9,7 +9,7 @@ import { imagesToPreload } from "./data/imagesToPreload";
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import WhatsAppButton from './components/WhatsAppButton';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
@@ -54,6 +54,7 @@ export default function App() {
         <Route path="/coming-soon" element={<ComingSoonEvents />} />
       </Routes>
       <AudioPlayer />
+      <WhatsAppButton />
     </Preloader>
   );
 }

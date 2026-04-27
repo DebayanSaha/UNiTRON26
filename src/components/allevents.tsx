@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
 
 /* ─────────────────────────────────────────
@@ -13,6 +12,7 @@ interface EventData {
   title: string;
   tagline: string;
   image: string;
+  cover: string;
   date: string;
   venue: string;
   team: string;
@@ -32,9 +32,10 @@ const eventsData: EventData[] = [
     title: 'DEATH RACE',
     tagline: 'Speed. Avoid. Survive the deadly track!',
     image: '/EP/DeathRace.jpeg',
-    date: '08-09 MAY 2K26',
-    venue: 'UNITRON ARENA',
-    team: '4 PLAYERS',
+    cover: '/EP/DeathRaceC.jpeg',
+    date: '08-10 MAY 2K26',
+    venue: 'FIT Ground',
+    team: ' 4 PLAYERS',
     icon: '💀',
     featured: true,
     domain: 'tech',
@@ -45,6 +46,23 @@ const eventsData: EventData[] = [
     entryFee: 'Rs 400/-',
     coordinator: 'HIMANGSHU SINGH (8100639881)'
   },
+  {
+    title: 'ROBO SOCCER',
+    tagline: 'Kick. Score. Dominate the pitch!',
+    image: '/EP/RoboSoccer.jpeg',
+    cover: '/EP/RoboSoccerC.jpeg',
+    date: '08-10 MAY 2K26',
+    venue: 'FIT Ground',
+    team: ' 4 PLAYERS',
+    icon: '⚽',
+    domain: 'tech',
+    description: 'Take the field with your custom-built remote-controlled bots. Pass, tackle, and score goals against the opposing team in an action-packed robotic soccer tournament.',
+    rulebook: '/Rulebook/ROBOSOCCER_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/wY5iFZGpwv8J4PU59",
+    prizePool: 'Rs 10,000',
+    entryFee: 'Rs 400/-',
+    coordinator: 'Aishee Majumder (9775966205)'
+  }
 ];
 
 /* ─────────────────────────────────────────
@@ -52,33 +70,7 @@ const eventsData: EventData[] = [
 ───────────────────────────────────────── */
 const CLIP = 'polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))';
 const INNER_CLIP = 'polygon(0 0, calc(100% - 12.5px) 0, 100% 12.5px, 100% 100%, 12.5px 100%, 0 calc(100% - 12.5px))';
-const HEX_CLIP = 'polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%)';
 
-function HexIcon({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{ position: 'relative', width: 48, height: 48, flexShrink: 0 }}>
-      <div style={{ position: 'absolute', inset: 0, clipPath: HEX_CLIP, background: 'rgba(255,0,168,0.8)', boxShadow: '0 0 12px rgba(255,0,168,0.5)' }} />
-      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(5,5,15,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function TrophyHex() {
-  return (
-    <div style={{ position: 'relative', width: 52, height: 52, flexShrink: 0 }}>
-      <div style={{ position: 'absolute', inset: 0, clipPath: HEX_CLIP, background: 'rgba(255,255,255,0.55)', boxShadow: '0 0 12px rgba(255,255,255,0.4)' }} />
-      <div style={{ position: 'absolute', inset: '2.5px', clipPath: HEX_CLIP, background: 'rgba(5,5,15,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8">
-          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-          <path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22" />
-          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-        </svg>
-      </div>
-    </div>
-  );
-}
 
 function CalendarIcon({ color = '#FF00A8' }: { color?: string }) {
   return (
@@ -431,7 +423,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
           onClick={onOpen}
         >
           <img
-            src={event.image}
+            src={event.cover}
             alt={event.title}
             className="w-full h-full object-cover transition-transform duration-500"
             style={{ display: 'block', background: '#0a0a1a' }}
@@ -490,7 +482,7 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
             </div>
           </div>
 
-          <div className="mt-auto">
+          <div className="mt-auto pt-5">
             <RegisterButton onClick={onOpen} accent={accent} />
           </div>
         </div>
@@ -571,6 +563,7 @@ function FilterTabs({ active, onSelect }: { active: Domain; onSelect: (d: Domain
 ───────────────────────────────────────── */
 export default function AllEvents() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // 1. Check the URL for an existing filter on initial load
   const getInitialFilter = () => {
@@ -648,7 +641,7 @@ export default function AllEvents() {
             {/* Row 1 on mobile: back + badge side by side */}
             <div className="flex items-center justify-between md:contents">
               <button
-                onClick={() => window.history.back()}
+                onClick={() => navigate('/')}
                 className="flex items-center gap-2 text-xs font-heading tracking-[0.2em] uppercase transition-all duration-200 group"
                 style={{ color: 'rgba(255,255,255,0.5)', border: 'none', background: 'none', cursor: 'pointer' }}
                 onMouseOver={(e) => { (e.currentTarget as HTMLButtonElement).style.color = '#00F0FF'; }}

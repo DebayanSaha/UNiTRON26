@@ -29,7 +29,7 @@ const TEAM: RoleGroup[] = [
     accent: '#FFD700',
     icon: '',
     members: [
-      { name: 'Dr Amit Kumar Majumdar', designation: 'Faculty Mentor & HOD, ECE', image: "/TEAM/Amit.jpeg" },
+      { name: 'Dr. Amit Kumar Majumdar', designation: 'Faculty Mentor & HOD, ECE', image: "/TEAM/Amit.jpeg" },
     ],
   },
   {
@@ -321,7 +321,7 @@ export default function CoreTeam() {
 
         {/* ── MAIN HEADER ── */}
         <div ref={titleRef} className="flex flex-col items-center justify-center mb-32 px-4 text-center">
-          <p className="font-heading text-sm md:text-base tracking-[0.5em] uppercase mb-6 text-[#00F0FF] drop-shadow-[0_0_15px_rgba(0,240,255,0.8)]">
+          <p className="font-heading text-sm md:text-base tracking-[0.5em] uppercase mb-6 text-[#00F0FF] drop-shadow-[0_0_15px_rgba(0,240,255,0.8)] style={{ marginRight: '-0.5em' }}">
             The Minds Behind UNiTRON 2K26
           </p>
           <h2 className="font-nfs text-5xl md:text-7xl lg:text-8xl tracking-widest uppercase text-white mb-8" style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}>

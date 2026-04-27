@@ -60,7 +60,7 @@ export default function About() {
         {/* Row 1: About UNiTRON */}
         <div ref={row1Ref} className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto mb-28 md:mb-36">
           <h2 className="font-nfs text-5xl sm:text-6xl md:text-7xl uppercase tracking-widest text-white mb-4" style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}>
-            ABOUT UN<span className='font-orbitron font-bold lowercase italic inline-block scale-x-[1.18] -skew-x-10 relative top-[1px] mx-[-1px] opacity-95'>i</span><span className="text-[#FF00A8] drop-shadow-[0_0_15px_rgba(255,0,168,0.8)]">T</span>RON
+            ABOUT <br className="sm:hidden" /> UN<span className='font-orbitron font-bold lowercase italic inline-block scale-x-[1.18] -skew-x-10 relative top-[1px] mx-[-1px] opacity-95'>i</span><span className="text-[#FF00A8] drop-shadow-[0_0_15px_rgba(255,0,168,0.8)]">T</span>RON
           </h2>
           <p className="font-orbitron text-[#FF00A8] text-sm md:text-base tracking-[0.2em] uppercase mb-8 drop-shadow-[0_0_8px_rgba(255,0,168,0.6)]">
             Event Dates: 08 - 10 MAY 2K26
@@ -132,9 +132,9 @@ export default function About() {
           {/* Stat 1 */}
           <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
             <div className="font-orbitron font-black text-4xl sm:text-5xl text-[#FF00A8] mb-3 group-hover:scale-110 transition-transform duration-300" style={{ textShadow: '0 0 20px rgba(255,0,168,0.6)' }}>
-              9th
+              7th
             </div>
-            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">EDITIONS</p>
+            <p className="font-rajdhani text-gray-400 text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold">EDITION</p>
           </div>
           {/* Stat 2 */}
           <div className="bg-[#0a0a1a] border border-[#FF00A8]/30 rounded-xl p-8 sm:p-10 flex flex-col items-center justify-center text-center group hover:border-[#FF00A8]/60 transition-colors duration-300">
