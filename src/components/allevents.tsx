@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* ─────────────────────────────────────────
@@ -12,7 +13,7 @@ interface EventData {
   title: string;
   tagline: string;
   image: string;
-  cover: string;
+  cover?: string;
   date: string;
   venue: string;
   team: string;
@@ -249,7 +250,7 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
             className="relative flex-shrink-0 w-full md:w-fit md:max-w-[45%]"
           >
             <style>{`
-              .popup-img-wrap { height: 200px; width: 100%; }
+              .popup-img-wrap { width: 100%; display: flex; justify-content: center; align-items: center; background: #0a0a1a; }
               @media (min-width: 768px) { 
                 .popup-img-wrap { 
                   height: 100%; 
@@ -258,8 +259,18 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
                 } 
               }
             `}</style>
-            <div className="popup-img-wrap bg-[#0a0a1a]">
-              <img src={event.image} alt={event.title} className="w-full h-full object-cover md:w-auto md:max-w-full md:object-contain" />
+            <div className="popup-img-wrap">
+              {event.cover ? (
+                <>
+                  <img src={event.cover} alt={event.title} className="w-full h-auto object-contain md:hidden" />
+                  <img src={event.image} alt={event.title} className="hidden md:block w-full h-full md:w-auto md:max-w-full md:object-contain" />
+                </>
+              ) : (
+                <>
+                  <img src={event.image} alt={event.title} className="w-full h-[250px] object-contain md:hidden" />
+                  <img src={event.image} alt={event.title} className="hidden md:block w-full h-full md:w-auto md:max-w-full md:object-contain" />
+                </>
+              )}
             </div>
           </div>
 
@@ -422,13 +433,23 @@ function EventCard({ event, onOpen }: { event: EventData; onOpen: () => void }) 
           style={{ cursor: 'pointer', flexShrink: 0 }}
           onClick={onOpen}
         >
-          <img
-            src={event.cover}
-            alt={event.title}
-            className="w-full h-full object-cover transition-transform duration-500"
-            style={{ display: 'block', background: '#0a0a1a' }}
-            onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
-          />
+          {event.cover ? (
+            <img
+              src={event.cover}
+              alt={event.title}
+              className="w-full h-full object-contain md:object-cover transition-transform duration-500"
+              style={{ background: '#000000ff' }}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
+            />
+          ) : (
+            <img
+              src={event.image}
+              alt={event.title}
+              className="block w-full h-full object-cover transition-transform duration-500"
+              style={{ background: '#0a0a1a' }}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden'; }}
+            />
+          )}
           <div
             className="absolute inset-0"
             style={{ background: 'linear-gradient(to top, rgba(5,5,15,1) 0%, rgba(5,5,15,0.75) 30%, rgba(5,5,15,0.15) 60%, transparent 100%)' }}
