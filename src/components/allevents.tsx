@@ -63,6 +63,40 @@ const eventsData: EventData[] = [
     prizePool: 'Rs 10,000',
     entryFee: 'Rs 400/-',
     coordinator: 'Aishee Majumder (9775966205)'
+  },
+  // {
+  //   title: 'WATER ROCKET',
+  //   tagline: 'Pressurize. Launch. Touch the sky!',
+  //   image: '/event-gaming.png',
+  //   cover: '/EP/RoboSoccerC.jpeg',
+  //   date: '08-10 MAY 2K26',
+  //   venue: 'FIT GROUND',
+  //   team: '1 - 3 PLAYERS',
+  //   icon: '🚀',
+  //   domain: 'tech',
+  //   description: 'Design and build aerodynamic water rockets using plastic bottles. Competitors will be judged on maximum flight time, altitude, and creative parachute deployment mechanisms.',
+  //   rulebook: '#',
+  //   registerLink: "#",
+  //   prizePool: 'Rs 10,000',
+  //   entryFee: 'Rs 400/-',
+  //   coordinator: 'Aishee Majumder (9775966205)'
+  // },
+  {
+    title: 'ROBO WAR',
+    tagline: 'Design. Destroy. Let machines battle!',
+    image: '/EP/RoboWar.webp',
+    cover: '/EP/RoboWarC.jpeg',
+    date: '08-10 MAY 2K26',
+    venue: 'FIT BATTLE ARENA',
+    team: '4 PLAYERS',
+    icon: '🤖',
+    domain: 'tech',
+    description: 'Engineer a combat bot and throw it into the arena. ROBO WAR is the ultimate test of mechanical design, electronics, and battle strategy. Your machine must survive hits and outlast every opponent.',
+    rulebook: '/Rulebook/ROBOWAR_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/gjh8zM7pp1c8tvaM8",
+    prizePool: 'Rs 25,000',
+    entryFee: 'Rs 700/-',
+    coordinator: 'Anirban Roy (7449692809)'
   }
 ];
 
