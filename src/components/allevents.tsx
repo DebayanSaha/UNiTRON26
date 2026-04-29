@@ -130,7 +130,36 @@ const eventsData: EventData[] = [
     prizePool: 'Rs 2,000',
     entryFee: 'Rs 100/-',
     coordinator: 'Anirban Roy (7449692809)'
-  }
+  },
+  {
+    title: 'EFOOTBALL',
+    tagline: 'Virtual Pitch Glory',
+    image: '/EP/EFOOTBALL.jpeg',
+    cover: '/EP/EFOOTBALLC.jpeg',
+    date: '08-10 MAY 2K26',
+    venue: 'FIT LAB',
+    team: '1 PLAYER',
+    icon: '⚽',
+    domain: 'gaming',
+    description: 'Take control of your favorite football clubs and outplay your opponents on the virtual pitch in intense EFOOTBALL matches.',
+    rulebook: '/Rulebook/PES_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/eSjK5YptJHiFivZY9",
+    prizePool: 'Rs 9,000',
+    entryFee: 'Rs 250/-',
+    coordinator: 'Subhajit Rudra (8515019384)'
+  },
+  // {
+  //   title: 'BGMI',
+  //   tagline: 'Chicken Dinner Awaits',
+  //   image: '/event-gaming.png',
+  //   date: '24 - 25 AUG 2K26',
+  //   venue: 'ESPORTS ZONE',
+  //   team: '4 PLAYERS',
+  //   icon: '🔫',
+  //   domain: 'gaming',
+  //   description: 'The ultimate battle royale experience. Coordinate with your squad, survive the zone, and secure the Winner Winner Chicken Dinner.',
+  //   rulebook: '#',
+  // }
 ];
 
 /* ─────────────────────────────────────────
