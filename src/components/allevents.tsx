@@ -157,7 +157,7 @@ const eventsData: EventData[] = [
     image: '/EP/BGMI.jpeg',
     cover: '/EP/BGMIC.jpeg',
     date: '08 - 10 MAY 2K26',
-    venue: 'FIT LAB',
+    venue: 'Online',
     team: '4 PLAYERS',
     icon: '🔫',
     domain: 'gaming',
@@ -176,6 +176,23 @@ const eventsData: EventData[] = [
       { label: 'BR ENTRY FEE', fee: 'Rs 200/-' }
     ],
     coordinator: 'Suman Jana (7384834184)'
+  },
+  {
+    title: 'VALORANT',
+    tagline: 'Tactical Hero Shooter',
+    image: '/EP/Valorant.jpeg',
+    cover: '/EP/ValorantC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'Online',
+    team: '5 PLAYERS',
+    icon: '🎯',
+    domain: 'gaming',
+    description: '5v5 character-based tactical shooter. Combine precise gunplay with unique agent abilities to secure rounds and win the match.',
+    rulebook: '/Rulebook/VALORANT_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/F9cRp8R3uXKnKgGz8",
+    prizePool: 'Rs 4,500',
+    entryFee: 'Rs 200/-',
+    coordinator: 'DEBADRI DAS (8777580825)'
   }
 ];
 
