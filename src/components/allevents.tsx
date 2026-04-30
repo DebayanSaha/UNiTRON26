@@ -190,7 +190,7 @@ const eventsData: EventData[] = [
     description: '5v5 character-based tactical shooter. Combine precise gunplay with unique agent abilities to secure rounds and win the match.',
     rulebook: '/Rulebook/VALORANT_RULEBOOK.pdf',
     registerLink: "https://forms.gle/F9cRp8R3uXKnKgGz8",
-    prizePool: 'Rs 4,500',
+    prizePool: 'Rs 5,000',
     entryFee: 'Rs 200/-',
     coordinator: 'DEBADRI DAS (8777580825)'
   }
