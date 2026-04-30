@@ -21,10 +21,13 @@ interface EventData {
   featured?: boolean;
   domain: 'tech' | 'gaming' | 'coding' | 'non-tech';
   description: string;
-  rulebook: string;
+  rulebook?: string; // <-- Change this to optional by adding the '?'
+  rulebooks?: { label: string; url: string }[];
   registerLink?: string;
+  registerLinks?: { label: string; url: string }[];
   prizePool?: string;
   entryFee?: string;
+  entryFees?: { label: string; fee: string }[];
   coordinator?: string;
 }
 
@@ -136,9 +139,9 @@ const eventsData: EventData[] = [
     tagline: 'Virtual Pitch Glory',
     image: '/EP/EFOOTBALL.jpeg',
     cover: '/EP/EFOOTBALLC.jpeg',
-    date: '08-10 MAY 2K26',
+    date: '08 - 10 MAY 2K26',
     venue: 'FIT LAB',
-    team: '1 PLAYER',
+    team: '3 PLAYERs',
     icon: '⚽',
     domain: 'gaming',
     description: 'Take control of your favorite football clubs and outplay your opponents on the virtual pitch in intense EFOOTBALL matches.',
@@ -148,18 +151,32 @@ const eventsData: EventData[] = [
     entryFee: 'Rs 250/-',
     coordinator: 'Subhajit Rudra (8515019384)'
   },
-  // {
-  //   title: 'BGMI',
-  //   tagline: 'Chicken Dinner Awaits',
-  //   image: '/event-gaming.png',
-  //   date: '24 - 25 AUG 2K26',
-  //   venue: 'ESPORTS ZONE',
-  //   team: '4 PLAYERS',
-  //   icon: '🔫',
-  //   domain: 'gaming',
-  //   description: 'The ultimate battle royale experience. Coordinate with your squad, survive the zone, and secure the Winner Winner Chicken Dinner.',
-  //   rulebook: '#',
-  // }
+  {
+    title: 'BGMI',
+    tagline: 'Chicken Dinner Awaits',
+    image: '/EP/BGMI.jpeg',
+    cover: '/EP/BGMIC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT LAB',
+    team: '4 PLAYERS',
+    icon: '🔫',
+    domain: 'gaming',
+    description: 'From high-octane Team Deathmatch shootouts to the ultimate Battle Royale survival. Coordinate with your squad, dominate the arena, outlast the zone, and claim your Winner Winner Chicken Dinner!',
+    rulebooks: [
+      { label: 'TDM RULEBOOK', url: '/Rulebook/BGMI_TDM_RULEBOOK.pdf' },
+      { label: 'BR RULEBOOK', url: '/Rulebook/BGMI_BR_RULEBOOK.pdf' }
+    ],
+    registerLinks: [
+      { label: 'REGISTER TDM →', url: 'https://forms.gle/4k47M2rHiEPu8ckHA' },
+      { label: 'REGISTER BR →', url: 'https://forms.gle/h1RGYQWx8ejmGJXa8' }
+    ],
+    prizePool: 'Rs 6,500',
+    entryFees: [
+      { label: 'TDM ENTRY FEE', fee: 'Rs 50/-' },
+      { label: 'BR ENTRY FEE', fee: 'Rs 200/-' }
+    ],
+    coordinator: 'Suman Jana (7384834184)'
+  }
 ];
 
 /* ─────────────────────────────────────────
@@ -215,7 +232,7 @@ const hexToRgb = (hex: string) => {
 /* ─────────────────────────────────────────
    SWIPE REGISTER BUTTON
 ───────────────────────────────────────── */
-function RegisterButton({ onClick, href, accent = '#FF00A8' }: { onClick?: () => void; href?: string; accent?: string }) {
+function RegisterButton({ onClick, href, label = 'REGISTER NOW →', accent = '#FF00A8' }: { onClick?: () => void; href?: string; label?: string; accent?: string }) {
   const shineRef = useRef<HTMLSpanElement>(null);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
@@ -254,7 +271,7 @@ function RegisterButton({ onClick, href, accent = '#FF00A8' }: { onClick?: () =>
       />
       {/* Label */}
       <span className="relative z-10" style={{ color: accent, textShadow: `0 0 8px ${accent}80` }}>
-        REGISTER NOW →
+        {label}
       </span>
     </>
   );
@@ -440,12 +457,20 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
                     <div className="text-lg sm:text-xl font-bold text-white tracking-wide">{event.prizePool}</div>
                   </div>
                 )}
-                {event.entryFee && (
+                {event.entryFee && !event.entryFees && (
                   <div className="flex-1 min-w-[140px] px-4 py-3 rounded-md" style={{ background: 'rgba(255,0,168,0.08)', border: '1px solid rgba(255,0,168,0.2)' }}>
                     <div className="text-[10px] font-heading tracking-widest text-[#FF00A8] mb-1 uppercase">ENTRY FEE</div>
                     <div className="text-lg sm:text-xl font-bold text-white tracking-wide">{event.entryFee}</div>
                   </div>
                 )}
+
+                {/* Map through multiple entry fees if they exist */}
+                {event.entryFees && event.entryFees.map((item, index) => (
+                  <div key={index} className="flex-1 min-w-[140px] px-4 py-3 rounded-md" style={{ background: 'rgba(255,0,168,0.08)', border: '1px solid rgba(255,0,168,0.2)' }}>
+                    <div className="text-[10px] font-heading tracking-widest text-[#FF00A8] mb-1 uppercase">{item.label}</div>
+                    <div className="text-lg sm:text-xl font-bold text-white tracking-wide">{item.fee}</div>
+                  </div>
+                ))}
                 {event.coordinator && (
                   <div className="w-full px-4 py-3 rounded-md" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}>
                     <div className="text-[10px] font-heading tracking-widest text-gray-400 mb-1 uppercase">COORDINATOR</div>
@@ -457,33 +482,83 @@ function EventPopup({ event, onClose }: { event: EventData; onClose: () => void 
 
             {/* Action buttons — stack row-wise and make them more visible */}
             <div className="flex flex-col w-full gap-4 mt-auto pt-0">
-              <div className="flex-1">
-                <RegisterButton href={event.registerLink || '#'} accent={accent} />
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                {event.registerLinks ? (
+                  event.registerLinks.map((link, index) => (
+                    <div className="flex-1" key={index}>
+                      <RegisterButton href={link.url} label={link.label} accent={accent} />
+                    </div>
+                  ))
+                ) : (
+                  // Fallback for all other standard events
+                  <div className="flex-1">
+                    <RegisterButton href={event.registerLink || '#'} accent={accent} />
+                  </div>
+                )}
               </div>
-              <a
-                href={event.rulebook}
-                download={`${event.title.replace(/\s+/g, '_')}_Rulebook.pdf`}
-                className="flex-1 flex items-center justify-center gap-2 px-2 sm:px-4 py-4 text-[10px] sm:text-xs md:text-md font-heading tracking-[0.18em] uppercase relative overflow-hidden no-underline"
-                style={{ clipPath: CLIP, color: '#fff', textDecoration: 'none', transition: 'all 0.3s ease', background: `rgba(${rgb}, 0.25)`, border: `1px solid rgba(${rgb}, 0.5)` }}
-                onMouseOver={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.4)`;
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 15px rgba(${rgb}, 0.4), inset 0 0 10px rgba(${rgb}, 0.2)`;
-                }}
-                onMouseOut={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.25)`;
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
-                }}
-              >
-                <span className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(90deg, ${accent}, transparent)`, clipPath: CLIP, opacity: 0.6 }} />
-                <span className="absolute pointer-events-none" style={{ inset: '1.5px', background: 'rgba(5,5,15,0.7)', clipPath: INNER_CLIP }} />
-                <span className="relative z-10 flex items-center gap-2 font-bold drop-shadow-md md:text-md">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" className="hidden sm:block">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                  RULEBOOK
-                </span>
-              </a>
+              {(() => {
+                const rulebooksToRender = event.rulebooks
+                  ? event.rulebooks
+                  : event.rulebook
+                    ? [{ label: 'RULEBOOK', url: event.rulebook }]
+                    : [];
+
+                if (rulebooksToRender.length === 0) return null;
+
+                return (
+                  <div className="flex flex-col sm:flex-row gap-4 w-full">
+                    {rulebooksToRender.map((rb, index) => (
+                      <a
+                        key={index}
+                        href={rb.url}
+                        download={`${event.title.replace(/\s+/g, '_')}_${rb.label.replace(/\s+/g, '_')}.pdf`}
+                        className="flex-1 flex items-center justify-center gap-2 px-2 sm:px-4 py-4 text-[10px] sm:text-xs md:text-md font-heading tracking-[0.18em] uppercase relative overflow-hidden no-underline"
+                        style={{
+                          clipPath: CLIP,
+                          color: '#fff',
+                          textDecoration: 'none',
+                          transition: 'all 0.3s ease',
+                          background: `rgba(${rgb}, 0.25)`,
+                          border: `1px solid rgba(${rgb}, 0.5)`,
+                        }}
+                        onMouseOver={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.4)`;
+                          (e.currentTarget as HTMLAnchorElement).style.boxShadow = `0 0 15px rgba(${rgb}, 0.4), inset 0 0 10px rgba(${rgb}, 0.2)`;
+                        }}
+                        onMouseOut={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${rgb}, 0.25)`;
+                          (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
+                        }}
+                      >
+                        <span
+                          className="absolute inset-0 pointer-events-none"
+                          style={{ background: `linear-gradient(90deg, ${accent}, transparent)`, clipPath: CLIP, opacity: 0.6 }}
+                        />
+                        <span
+                          className="absolute pointer-events-none"
+                          style={{ inset: '1.5px', background: 'rgba(5,5,15,0.7)', clipPath: INNER_CLIP }}
+                        />
+                        <span className="relative z-10 flex items-center gap-2 font-bold drop-shadow-md md:text-md text-center">
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="#fff"
+                            strokeWidth="2.5"
+                            className="hidden sm:block flex-shrink-0"
+                          >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                          {rb.label}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>
