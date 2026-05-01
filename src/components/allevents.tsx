@@ -193,6 +193,32 @@ const eventsData: EventData[] = [
     prizePool: 'Rs 5,000',
     entryFee: 'Rs 200/-',
     coordinator: 'DEBADRI DAS (8777580825)'
+  },
+  {
+    title: 'Free Fire',
+    tagline: 'Final stand!',
+    image: '/EP/FreeFire.jpeg',
+    cover: '/EP/FreeFireC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'Online',
+    team: '4 PLAYERS',
+    icon: '🔫',
+    domain: 'gaming',
+    description: 'Drop into the battleground, loot up, and survive. Prove your squad\'s tactical superiority in high-stakes Free Fire matches.',
+    rulebooks: [
+      { label: 'TDM RULEBOOK', url: '/Rulebook/FREEFIRE_TDM_RULEBOOK.pdf' },
+      { label: 'BR RULEBOOK', url: '/Rulebook/FREEFIRE_BR_RULEBOOK.pdf' }
+    ],
+    registerLinks: [
+      { label: 'REGISTER TDM →', url: 'https://forms.gle/D1ASwMK1URVLoii39' },
+      { label: 'REGISTER BR →', url: 'https://forms.gle/k4cUoqk7kFvbKz4u9' }
+    ],
+    prizePool: 'Rs 5,000',
+    entryFees: [
+      { label: 'TDM ENTRY FEE', fee: 'Rs 50/-' },
+      { label: 'BR ENTRY FEE', fee: 'Rs 200/-' }
+    ],
+    coordinator: 'SUBHAJIT RUDRA (8515019384)'
   }
 ];
 
