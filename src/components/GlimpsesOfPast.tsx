@@ -262,7 +262,7 @@ export default function GlimpsesOfPast() {
   const yearlyGalleries = [
     {
       year: 'UNiTRON 25',
-      description: 'A year of rapid growth, new milestones, and late-night coding sessions.',
+      description: '6th Edition | Theme: Spiderverse',
       images: [
         '/m25/m251.webp', '/m25/m252.webp', '/m25/m253.webp', '/m25/m254.webp',
         '/m25/m255.jpeg', '/m25/m256.jpeg', '/m25/m257.webp', '/m25/m258.webp',
@@ -278,7 +278,7 @@ export default function GlimpsesOfPast() {
     },
     {
       year: 'UNiTRON 24',
-      description: 'Establishing our roots, first major tech symposiums, and unforgettable team retreats.',
+      description: '5th Edition | Theme:Cyberpunk',
       images: [
         '/m24/m241.JPG', '/m24/m242.JPG', '/m24/m243.JPG', '/m24/m244.JPG',
         '/m24/m245.JPG', '/m24/m246.JPG', '/m24/m247.JPG', '/m24/m248.JPG',

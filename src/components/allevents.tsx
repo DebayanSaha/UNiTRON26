@@ -270,24 +270,24 @@ const eventsData: EventData[] = [
     prizePool: '',
     entryFee: 'Rs 50/-',
     coordinator: 'SUMAN JANA (7384834184)'
+  },
+  {
+    title: 'FRONTEND FURY',
+    tagline: 'Css Battle',
+    image: '/EP/Frontend.jpeg',
+    cover: '/EP/FrontendC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Lab',
+    team: '2 PLAYERS',
+    icon: '🎯',
+    domain: 'coding',
+    description: 'Replicate complex UI designs using only CSS. No images, no SVGs, no JS. Just pure CSS styling skills and pixel-perfect precision.',
+    rulebook: '/Rulebook/FRONTENDFURY_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/38gYXgqG4e3RVU5aA",
+    prizePool: '1000',
+    entryFee: 'Rs 100/-',
+    coordinator: 'Snehashish Banerjee (7074745436)'
   }
-  // {
-  //   title: 'FRONTEND FURY',
-  //   tagline: 'Css Battle',
-  //   image: '/EP/COD.jpeg',
-  //   cover: '/EP/CODC.jpeg',
-  //   date: '08 - 10 MAY 2K26',
-  //   venue: 'FIT Lab',
-  //   team: '2 PLAYERS',
-  //   icon: '🎯',
-  //   domain: 'coding',
-  //   description: 'Replicate complex UI designs using only CSS. No images, no SVGs, no JS. Just pure CSS styling skills and pixel-perfect precision.',
-  //   rulebook: '',
-  //   registerLink: "",
-  //   prizePool: '1000',
-  //   entryFee: 'Rs 100/-',
-  //   coordinator: 'Snehashish Banerjee (7074745436)'
-  // }
 ];
 
 /* ─────────────────────────────────────────
