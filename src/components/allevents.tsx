@@ -219,7 +219,75 @@ const eventsData: EventData[] = [
       { label: 'BR ENTRY FEE', fee: 'Rs 200/-' }
     ],
     coordinator: 'SUBHAJIT RUDRA (8515019384)'
+  },
+  {
+    title: 'Asphalt',
+    tagline: 'Arcade Racing Legends',
+    image: '/EP/Asphalt.jpeg',
+    cover: '/EP/AsphaltC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT',
+    team: '1 PLAYERS',
+    icon: '🎯',
+    domain: 'gaming',
+    description: 'High-speed arcade racing. Drift, boost, and perform stunts to cross the finish line first in Asphalt',
+    rulebook: '/Rulebook/ASPHALT_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/VuT54oPH9H8MfEPFA",
+    prizePool: '',
+    entryFee: 'Rs 50/-',
+    coordinator: 'SUBHAJIT RUDRA (8515019384)'
+  },
+  {
+    title: 'Call of Duty',
+    tagline: 'Modern Warfare Mobile',
+    image: '/EP/COD.jpeg',
+    cover: '/EP/CODC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Lab',
+    team: '5 PLAYERS',
+    icon: '🎯',
+    domain: 'gaming',
+    description: 'Fast-paced multiplayer action. Dominate the maps in various game modes and lead your team to victory in Call of Duty Mobile.',
+    rulebook: '/Rulebook/COD_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/FjeGK3RPB1tqtwtA9",
+    prizePool: '',
+    entryFee: 'Rs 50/-',
+    coordinator: 'DEBADRI DAS (8777580825)'
+  },
+  {
+    title: 'FIFA',
+    tagline: 'Kickoff to Victory',
+    image: '/EP/FIFA.jpeg',
+    cover: '/EP/FIFAC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT',
+    team: '1 PLAYERS',
+    icon: '🎯',
+    domain: 'gaming',
+    description: 'Experience the thrill of competitive FIFA. Showcase your dribbling, passing, and shooting skills to become the champion.',
+    rulebook: '/Rulebook/FIFA_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/5ka4K5Ak8W7Ytxc26",
+    prizePool: '',
+    entryFee: 'Rs 50/-',
+    coordinator: 'SUMAN JANA (7384834184)'
   }
+  // {
+  //   title: 'FRONTEND FURY',
+  //   tagline: 'Css Battle',
+  //   image: '/EP/COD.jpeg',
+  //   cover: '/EP/CODC.jpeg',
+  //   date: '08 - 10 MAY 2K26',
+  //   venue: 'FIT Lab',
+  //   team: '2 PLAYERS',
+  //   icon: '🎯',
+  //   domain: 'coding',
+  //   description: 'Replicate complex UI designs using only CSS. No images, no SVGs, no JS. Just pure CSS styling skills and pixel-perfect precision.',
+  //   rulebook: '',
+  //   registerLink: "",
+  //   prizePool: '1000',
+  //   entryFee: 'Rs 100/-',
+  //   coordinator: 'Snehashish Banerjee (7074745436)'
+  // }
 ];
 
 /* ─────────────────────────────────────────

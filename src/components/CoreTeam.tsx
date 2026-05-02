@@ -40,7 +40,7 @@ const TEAM: RoleGroup[] = [
       { name: 'Bishal Maity', designation: 'Mentor', image: '/TEAM/Bishal.jpg' },
       { name: 'Debayan Das', designation: 'Mentor', image: '/TEAM/Debayan.webp' },
       { name: 'Sayan Maity', designation: 'Mentor', image: '/TEAM/Sayan.jpg' },
-      { name: 'Sudipta Sanyal', designation: 'Mentor', image: '/TEAM/Sudipta.jpg' },
+      { name: 'Sudipta Sanyal', designation: 'Mentor', image: '/TEAM/Sudipta1.jpeg' },
       { name: 'Snehasish Das', designation: 'Mentor', image: '/TEAM/Snehasish.jpg' },
       { name: 'Diganta Debsharma', designation: 'Mentor', image: '/TEAM/Diganta.jpeg' },
     ],
