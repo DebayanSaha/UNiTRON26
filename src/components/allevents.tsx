@@ -338,6 +338,40 @@ const eventsData: EventData[] = [
     prizePool: '3000',
     entryFee: 'Rs 200/-',
     coordinator: ' Adrija Ghosh (7003393995)'
+  },
+  {
+    title: 'OUTRUN THE HEAT',
+    tagline: 'Hurdle Race',
+    image: '/EP/hurdle.jpeg',
+    cover: '/EP/hurdleC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Ground',
+    team: '4 PLAYERS',
+    icon: '🎯',
+    domain: 'non-tech',
+    description: 'A thrilling hurdle race that will test your speed, agility, and endurance.',
+    rulebook: '/Rulebook/OUTRUN_THE_HEAT_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/UffxMNWuPGd5nNiH8",
+    prizePool: '1000',
+    entryFee: 'Rs 150/-',
+    coordinator: ' Arijit Ghosh (9339401946)'
+  },
+  {
+    title: 'RAPID RESPONSE',
+    tagline: 'Tech Quiz',
+    image: '/EP/quiz.jpeg',
+    cover: '/EP/quizC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT',
+    team: '4 PLAYERS',
+    icon: '🎯',
+    domain: 'non-tech',
+    description: 'Test your knowledge on the latest tech trends, trivia, and innovations in this fast-paced quiz.',
+    rulebook: '/Rulebook/RAPID_RESPONSE_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/KtoK6DnFLS25s1NS6",
+    prizePool: '500+Trophies',
+    entryFee: 'Rs 100/-',
+    coordinator: 'Arijit Ghosh (9339401946), Adrija Ghosh (7003393995)'
   }
 ];
 
