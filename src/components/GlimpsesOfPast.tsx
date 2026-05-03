@@ -222,12 +222,7 @@ function AutoCarousel({ images, onImageClick, reverse = false }: AutoCarouselPro
           <div
             key={idx}
             onClick={() => onImageClick(images, idx % images.length)}
-            // FIX 7: Card hover uses CSS transform on a GPU-composited element.
-            // `will-change: transform` on each card lets the browser pre-promote them.
-            // `transform: translateZ(0)` ensures they're on their own layer before hover.
             style={{
-              willChange: 'transform',
-              transform: 'translateZ(0)',
               flexShrink: 0,
             }}
             className="w-[70vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] h-[250px] md:h-[350px] mr-4 md:mr-6 cursor-pointer relative overflow-hidden rounded-xl md:rounded-2xl shadow-lg carousel-card"
@@ -408,25 +403,20 @@ export default function GlimpsesOfPast() {
         }
 
         /*
-          FIX 15: Hover scale is done via CSS on .carousel-img, NOT on the card wrapper.
+          Hover scale is done via CSS on .carousel-img, NOT on the card wrapper.
           Scaling the wrapper triggers a stacking context change and can cause siblings to repaint.
-          Scaling only the <img> inside keeps repaints fully isolated to that composited layer.
         */
         .carousel-card {
-          /* Promote card to its own compositor layer */
-          transform: translateZ(0);
-          backface-visibility: hidden;
+          /* Ensure overflow hidden works correctly during scale */
+          isolation: isolate;
         }
 
         .carousel-card:hover .carousel-img {
-          transform: scale(1.05) translateZ(0);
-          transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transform: scale(1.05);
         }
 
         .carousel-img {
-          transform: translateZ(0);
           transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          backface-visibility: hidden;
         }
 
         /* Dark overlay on hover — opacity only, GPU composited */

@@ -287,6 +287,57 @@ const eventsData: EventData[] = [
     prizePool: '1000',
     entryFee: 'Rs 100/-',
     coordinator: 'Snehashish Banerjee (7074745436)'
+  },
+  {
+    title: 'BUG BREAKDOWN',
+    tagline: 'Syntax Sabotage',
+    image: '/EP/Bug.jpeg',
+    cover: '/EP/BugC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Lab',
+    team: '1 PLAYERS',
+    icon: '🎯',
+    domain: 'coding',
+    description: 'Find and fix the bugs in heavily sabotaged code. Test your debugging skills across various programming languages under a strict time limit.',
+    rulebook: '/Rulebook/BUGBREAKDOWN_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/sLXBpNWNaXZW6uW48",
+    prizePool: '',
+    entryFee: 'Rs 100/-',
+    coordinator: 'Snehashish Banerjee (7074745436)'
+  },
+  {
+    title: 'BACKTRACK BURNOUT',
+    tagline: 'Reverse Coding',
+    image: '/EP/Backtrack.jpeg',
+    cover: '/EP/BacktrackC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Lab',
+    team: '1 PLAYERS',
+    icon: '🎯',
+    domain: 'coding',
+    description: 'Given an executable or output pattern, write the code that generates it. Think backwards, analyze the behavior, and reconstruct the logic.',
+    rulebook: '/Rulebook/BACKTRACKBURNOUT_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/Y52eqVovz7hL5x6K6",
+    prizePool: '1000',
+    entryFee: 'Rs 100/-',
+    coordinator: 'Swapnil Chaki (9432152567)'
+  },
+  {
+    title: 'THE OUTLAW\'S CACHE',
+    tagline: 'Treasure Hunt',
+    image: '/EP/Outlaw.jpeg',
+    cover: '/EP/OutlawC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT Ground',
+    team: '1 - 4 PLAYERS',
+    icon: '🎯',
+    domain: 'non-tech',
+    description: 'Follow the clues, solve the riddles, and discover the hidden cache before time runs out.',
+    rulebook: '/Rulebook/THE_OUTLAWS_CACHE_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/qLWKKHJVUNwNJowf6",
+    prizePool: '3000',
+    entryFee: 'Rs 200/-',
+    coordinator: ' Adrija Ghosh (7003393995)'
   }
 ];
 
