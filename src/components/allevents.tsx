@@ -401,7 +401,7 @@ const eventsData: EventData[] = [
     icon: '🎯',
     domain: 'non-tech',
     description: 'Express your artistic vision. Bring your imagination to life on the canvas.',
-    rulebook: '/Rulebook/VISUAL_REPUTATION_RULEBOOK.pdf',
+    rulebook: '/Rulebook/VISUAL_REPRESENTATION_RULEBOOK.pdf',
     registerLink: "https://forms.gle/tJTWRFZ2SaUbsN5K9",
     prizePool: '',
     entryFee: 'Rs 35/- [FREE FOR TTT Members]',
