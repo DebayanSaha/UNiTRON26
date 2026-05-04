@@ -260,29 +260,58 @@ export default function GlimpsesOfPast() {
       description: '6th Edition | Theme: Spiderverse',
       images: [
         '/m25/m251.webp', '/m25/m252.webp', '/m25/m253.webp', '/m25/m254.webp',
-        '/m25/m255.jpeg', '/m25/m256.jpeg', '/m25/m257.webp', '/m25/m258.webp',
-        '/m25/m259.webp', '/m25/m2510.JPG', '/m25/m2511.webp', '/m25/m2512.webp',
-        '/m25/m2513.webp', '/m25/m2514.webp', '/m25/m2515.JPG', '/m25/m2516.JPG',
-        '/m25/m2517.webp', '/m25/m2518.webp', '/m25/m2519.jpeg', '/m25/m2520.jpeg',
-        '/m25/m2521.jpeg', '/m25/m2522.jpeg', '/m25/m2523.jpeg', '/m25/m2524.jpeg',
-        '/m25/m2525.jpeg', '/m25/m2526.jpeg', '/m25/m2527.jpeg', '/m25/m2528.jpeg',
-        '/m25/m2529.jpeg', '/m25/m2530.jpeg', '/m25/m2531.jpeg', '/m25/m2532.jpeg',
-        '/m25/m2533.jpeg', '/m25/m2534.jpeg', '/m25/m2535.jpeg', '/m25/m2536.jpeg',
-        '/m25/m2537.jpeg', '/m25/m2538.jpeg', '/m25/m2539.jpeg', '/m25/m2540.jpeg'
+        '/m25/m255.webp', '/m25/m256.webp', '/m25/m257.webp', '/m25/m258.webp',
+        '/m25/m259.webp', '/m25/m2510.webp', '/m25/m2511.webp', '/m25/m2512.webp',
+        '/m25/m2513.webp', '/m25/m2514.webp', '/m25/m2515.webp', '/m25/m2516.webp',
+        '/m25/m2517.webp', '/m25/m2518.webp', '/m25/m2519.webp', '/m25/m2520.webp',
+        '/m25/m2521.webp', '/m25/m2522.webp', '/m25/m2523.webp', '/m25/m2524.webp',
+        '/m25/m2525.webp', '/m25/m2526.webp', '/m25/m2527.webp', '/m25/m2528.webp',
+        '/m25/m2529.webp', '/m25/m2530.webp', '/m25/m2531.webp', '/m25/m2532.webp',
+        '/m25/m2533.webp', '/m25/m2534.webp', '/m25/m2535.webp', '/m25/m2536.webp',
+        '/m25/m2537.webp', '/m25/m2538.webp', '/m25/m2539.webp', '/m25/m2540.webp'
       ],
     },
     {
       year: 'UNiTRON 24',
       description: '5th Edition | Theme:Cyberpunk',
       images: [
-        '/m24/m241.JPG', '/m24/m242.JPG', '/m24/m243.JPG', '/m24/m244.JPG',
-        '/m24/m245.JPG', '/m24/m246.JPG', '/m24/m247.JPG', '/m24/m248.JPG',
-        '/m24/m249.JPG', '/m24/m2410.JPG', '/m24/m2411.JPG', '/m24/m2412.JPG',
-        '/m24/m2413.JPG', '/m24/m2414.JPG', '/m24/m2415.JPG', '/m24/m2416.JPG',
-        '/m24/m2417.JPG', '/m24/m2418.JPG', '/m24/m2419.JPG', '/m24/m2420.JPG',
-        '/m24/m2421.jpg', '/m24/m2422.jpg', '/m24/m2423.jpg', '/m24/m2424.jpg',
-        '/m24/m2425.jpg', '/m24/m2426.jpg', '/m24/m2427.jpg', '/m24/m2428.jpg',
-        '/m24/m2429.jpg'
+        '/m24/m241.webp', '/m24/m242.webp', '/m24/m243.webp', '/m24/m244.webp',
+        '/m24/m245.webp', '/m24/m246.webp', '/m24/m247.webp', '/m24/m248.webp',
+        '/m24/m249.webp', '/m24/m2410.webp', '/m24/m2411.webp', '/m24/m2412.webp',
+        '/m24/m2413.webp', '/m24/m2414.webp', '/m24/m2415.webp', '/m24/m2416.webp',
+        '/m24/m2417.webp', '/m24/m2418.webp', '/m24/m2419.webp', '/m24/m2420.webp',
+        '/m24/m2421.webp', '/m24/m2422.webp', '/m24/m2423.webp', '/m24/m2424.webp',
+        '/m24/m2425.webp', '/m24/m2426.webp', '/m24/m2427.webp', '/m24/m2428.webp',
+        '/m24/m2429.webp'
+      ],
+    },
+    {
+      year: 'UNiTRON 23',
+      description: '4th Edition',
+      images: [
+        '/m23/m231.webp', '/m23/m232.webp', '/m23/m233.webp', '/m23/m234.webp',
+        '/m23/m235.webp', '/m23/m236.webp', '/m23/m237.webp', '/m23/m238.webp',
+        '/m23/m239.webp', '/m23/m2310.webp', '/m23/m2311.webp', '/m23/m2312.webp',
+        '/m23/m2313.webp', '/m23/m2314.webp', '/m23/m2315.webp', '/m23/m2316.webp',
+        '/m23/m2317.webp', '/m23/m2318.webp', '/m23/m2319.webp', '/m23/m2320.webp',
+        '/m23/m2321.webp', '/m23/m2322.webp', '/m23/m2323.webp', '/m23/m2324.webp',
+        '/m23/m2325.webp', '/m23/m2326.webp', '/m23/m2327.webp', '/m23/m2328.webp',
+        '/m23/m2329.webp', '/m23/m2330.webp', '/m23/m2331.webp', '/m23/m2332.webp',
+        '/m23/m2333.webp', '/m23/m2334.webp'
+      ],
+    },
+    {
+      year: 'UNiTRON 22',
+      description: '3rd Edition',
+      images: [
+        '/Arc/arc1.webp', '/Arc/arc2.webp', '/Arc/arc3.webp', '/Arc/arc4.webp',
+        '/Arc/arc5.webp', '/Arc/arc6.webp', '/Arc/arc7.webp', '/Arc/arc8.webp',
+        '/Arc/arc9.webp', '/Arc/arc10.webp', '/Arc/arc11.webp', '/Arc/arc12.webp',
+        '/Arc/arc13.webp', '/Arc/arc14.webp', '/Arc/arc15.webp', '/Arc/arc16.webp',
+        '/Arc/arc17.webp', '/Arc/arc18.webp', '/Arc/arc19.webp', '/Arc/arc20.webp',
+        '/Arc/arc21.webp', '/Arc/arc22.webp', '/Arc/arc23.webp', '/Arc/arc24.webp',
+        '/Arc/arc25.webp', '/Arc/arc26.webp', '/Arc/arc27.webp', '/Arc/arc28.webp',
+        '/Arc/arc29.webp', '/Arc/arc30.webp', '/Arc/arc31.webp', '/Arc/arc32.webp'
       ],
     }
   ];

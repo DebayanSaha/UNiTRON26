@@ -372,6 +372,40 @@ const eventsData: EventData[] = [
     prizePool: '500+Trophies',
     entryFee: 'Rs 100/-',
     coordinator: 'Arijit Ghosh (9339401946), Adrija Ghosh (7003393995)'
+  },
+  {
+    title: 'AIRBORNE CONNECTION',
+    tagline: 'Span The Gap',
+    image: '/EP/Span.jpeg',
+    cover: '/EP/SpanC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT',
+    team: '1 - 4 PLAYERS',
+    icon: '🎯',
+    domain: 'non-tech',
+    description: 'Design and build a bridge structure that can span the gap and hold maximum weight.',
+    rulebook: '/Rulebook/AIRBORNE_CONNECTION_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/JB3xP5CqdEAxqbq37",
+    prizePool: '500+Trophies',
+    entryFee: 'Rs 100/-',
+    coordinator: 'Adrija Ghosh (7003393995)'
+  },
+  {
+    title: 'VISUAL REPUTATION',
+    tagline: 'Drawing',
+    image: '/EP/Draw.jpeg',
+    cover: '/EP/DrawC.jpeg',
+    date: '08 - 10 MAY 2K26',
+    venue: 'FIT',
+    team: 'Individual',
+    icon: '🎯',
+    domain: 'non-tech',
+    description: 'Express your artistic vision. Bring your imagination to life on the canvas.',
+    rulebook: '/Rulebook/VISUAL_REPUTATION_RULEBOOK.pdf',
+    registerLink: "https://forms.gle/tJTWRFZ2SaUbsN5K9",
+    prizePool: '',
+    entryFee: 'Rs 35/- [FREE FOR TTT Members]',
+    coordinator: 'Trishit Maity (8101400576)'
   }
 ];
 
